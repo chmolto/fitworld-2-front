@@ -1,0 +1,8 @@
+<div class="container">
+    <form [formGroup]="formGroup">
+      <input type="text" placeholder="Username" formControlName="username" />
+      <input type="text" placeholder="Password" formControlName="password"/>
+      <button (click)="doLogin()" mat-button>Login</button>
+    </form>
+  </div>
+  
