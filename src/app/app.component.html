@@ -1,3 +1,9 @@
 <div class="container">
-  <p class="hit-the-floor">LETS GO BISENTE</p>
+    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+        <p class="hit-the-floor">LETS GO BISENTE</p>
+        
+        <button class="button" type="submit">Purchase</button>
+
+    </form>
+
 </div>
