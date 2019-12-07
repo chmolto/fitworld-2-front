@@ -1,0 +1,6 @@
+.container {
+  height: 100vh;
+}
+.container .card {
+  width: 400px;
+}

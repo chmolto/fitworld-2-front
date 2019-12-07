@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row justify-content-center mt-2">
+    <img src="assets/images/logo.gif" alt="logo" />
+  </div>
+  <div class="row justify-content-center mt-3">
+    <form [formGroup]="formGroup">
+      <div class="card">
+        <div class="card-body">
+          <div class="form-group">
+            <label>Username</label>
+            <input
+              placeholder="Enter a username"
+              class="form-control"
+              formControlName="username"
+            />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Password"
+              formControlName="password1"
+            />
+          </div>
+          <div class="form-group">
+            <label>Repeat password</label>
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Password"
+              formControlName="password2"
+            />
+          </div>
+          <div class="alert alert-danger">
+            Please, check <b>all</b> the fields are correct
+          </div>
+          <button (click)="doRegister()" class="btn btn-secondary btn-lg btn-block">
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
