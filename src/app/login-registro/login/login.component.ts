@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { RestManagerService } from '../../services/rest-manager.service';
+import { ApiRoutesConstants } from 'src/app/constants/api-routes.constants';
 
 @Component({
   selector: "app-login",
@@ -9,7 +11,9 @@ import { Router } from "@angular/router";
 })
 export class LoginComponent implements OnInit {
   public formGroup: FormGroup;
-  constructor(private route: Router) {}
+  constructor(
+    private route: Router,
+    private restService:RestManagerService) {}
 
   ngOnInit() {
     this.formGroup = new FormGroup({
@@ -19,7 +23,15 @@ export class LoginComponent implements OnInit {
   }
 
   public doLogin() {
-    console.log(this.formGroup.status);
+    let body = {
+      username: this.formGroup.controls["username"].value,
+      password: this.formGroup.controls["password"].value
+    };
+    if (this.formGroup.valid) {
+      this.restService.post(ApiRoutesConstants.SIGNIN, body).subscribe(data => {
+        console.log(data);
+      });
+    }
   }
 
   public redirectRegistro() {

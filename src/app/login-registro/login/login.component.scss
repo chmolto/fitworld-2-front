@@ -1,0 +1,20 @@
+.container {
+  height: 100vh;
+  .card {
+    margin-top: 30vh;
+    width: 300px;
+  }
+  .front-cover {
+    height: 100vh;
+    background-image: url("../../../assets/images/arnie.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .logo-holder {
+    position: absolute;
+    z-index: 3;
+    margin-top: -36px;
+    margin-left: 50px;
+  }
+}
