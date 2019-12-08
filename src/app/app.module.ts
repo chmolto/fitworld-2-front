@@ -11,11 +11,18 @@ import { LoginComponent } from "./login-registro/login/login.component";
 import { RegistroComponent } from "./login-registro/registro/registro.component";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from "@angular/common/http";
 import { ParticleEffectButtonModule } from "angular-particle-effect-button";
+import { MatSnackBarModule } from "@angular/material";
+import { HomeComponent } from "./login-registro/home/home.component";
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegistroComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    RegistroComponent,
+    HomeComponent
+  ],
   imports: [
     ReactiveFormsModule,
     FormsModule,
@@ -28,7 +35,8 @@ import { ParticleEffectButtonModule } from "angular-particle-effect-button";
     MatFormFieldModule,
     MatInputModule,
     HttpClientModule,
-    ParticleEffectButtonModule
+    ParticleEffectButtonModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,9 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { RestManagerService } from "../../services/rest-manager.service";
-import { ApiRoutesConstants } from '../../constants/api-routes.constants';
+import { ApiRoutesConstants } from "../../constants/api-routes.constants";
 
 @Component({
   selector: "app-registro",
@@ -12,7 +11,12 @@ import { ApiRoutesConstants } from '../../constants/api-routes.constants';
 })
 export class RegistroComponent implements OnInit {
   public formGroup: FormGroup;
-  constructor(private restService: RestManagerService, private route: Router) {}
+  public hidden: boolean;
+
+  constructor(
+    private restService: RestManagerService,
+    private route: Router,
+  ) {}
 
   ngOnInit() {
     this.formGroup = new FormGroup({
@@ -23,14 +27,24 @@ export class RegistroComponent implements OnInit {
   }
 
   public doRegister() {
-    let body = {
-      username: this.formGroup.controls["username"].value,
-      password: this.formGroup.controls["password1"].value
-    };
     if (this.formGroup.valid) {
+      this.hidden = true;
+      let body = {
+        username: this.formGroup.controls["username"].value,
+        password: this.formGroup.controls["password1"].value
+      };
       this.restService.post(ApiRoutesConstants.SIGNUP, body).subscribe(data => {
-        console.log(data);
+        if (!data.error) {
+          setTimeout(() => {
+            this.route.navigateByUrl("/login");
+          }, 1000);
+        } else {
+          setTimeout(() => {
+            this.hidden = false;
+          }, 2000);
+        }
       });
+    } else {
     }
   }
 }

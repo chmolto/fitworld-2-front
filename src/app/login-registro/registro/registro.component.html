@@ -35,7 +35,15 @@
           <div class="alert alert-danger">
             Please, check <b>all</b> the fields are correct
           </div>
-          <button (click)="doRegister()" class="btn btn-secondary btn-block">
+          <button
+            libParticleEffectButton
+            pType="triangle"
+            pDuration="500"
+            [pParticlesAmountCoefficient]="3"
+            [pHidden]="hidden"
+            (click)="doRegister()"
+            class="btn btn-secondary"
+          >
             Submit
           </button>
         </div>
