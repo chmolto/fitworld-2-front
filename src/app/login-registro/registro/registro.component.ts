@@ -13,10 +13,7 @@ export class RegistroComponent implements OnInit {
   public formGroup: FormGroup;
   public hidden: boolean;
 
-  constructor(
-    private restService: RestManagerService,
-    private route: Router,
-  ) {}
+  constructor(private restService: RestManagerService, private route: Router) {}
 
   ngOnInit() {
     this.formGroup = new FormGroup({
@@ -26,25 +23,45 @@ export class RegistroComponent implements OnInit {
     });
   }
 
-  public doRegister() {
-    if (this.formGroup.valid) {
-      this.hidden = true;
-      let body = {
-        username: this.formGroup.controls["username"].value,
-        password: this.formGroup.controls["password1"].value
-      };
-      this.restService.post(ApiRoutesConstants.SIGNUP, body).subscribe(data => {
-        if (!data.error) {
-          setTimeout(() => {
-            this.route.navigateByUrl("/login");
-          }, 1000);
-        } else {
-          setTimeout(() => {
-            this.hidden = false;
-          }, 2000);
-        }
-      });
-    } else {
+  private checkPasswordsAreEqual(): boolean {
+    return (
+      this.formGroup.controls["password1"].value ===
+      this.formGroup.controls["password2"].value
+    );
+  }
+
+  public checkForm() {
+    let checker = true;
+    if (!this.formGroup.valid) {
+      checker = false;
+      alert('ERROR')
+
     }
+    if (!this.checkPasswordsAreEqual()) {
+      checker = false;
+      alert('NO COINCIDEN')
+    }
+    if (checker) {
+      this.doRegister();
+    }
+  }
+
+  private doRegister() {
+    this.hidden = true;
+    let body = {
+      username: this.formGroup.controls["username"].value,
+      password: this.formGroup.controls["password1"].value
+    };
+    this.restService.post(ApiRoutesConstants.SIGNUP, body).subscribe(data => {
+      if (!data.error) {
+        setTimeout(() => {
+          this.route.navigateByUrl("/login");
+        }, 1000);
+      } else {
+        setTimeout(() => {
+          this.hidden = false;
+        }, 2000);
+      }
+    });
   }
 }

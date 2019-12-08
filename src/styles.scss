@@ -8,8 +8,12 @@ html {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     height: 100%;
-
   }
+}
+
+.form-control:focus {
+  border-color: #19f5f5 !important;
+  box-shadow: 0 0 0 0.2rem #19f5f547 !important;
 }
 
 .pi {
