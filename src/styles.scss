@@ -5,6 +5,10 @@ html {
   background: #0a0a0c;
   body {
     background: #0a0a0c;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    height: 100%;
+
   }
 }
 
@@ -21,5 +25,3 @@ html {
   width: 100vw;
   overflow: hidden;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
