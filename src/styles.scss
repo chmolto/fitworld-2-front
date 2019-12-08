@@ -1,9 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~material-design-icons/iconfont/material-icons.css";
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 html {
-  background: black;
+  background: #0a0a0c;
   body {
-    background: black;
+    background: #0a0a0c;
   }
+}
+
+.pi {
+  vertical-align: middle !important;
+}
+
+.material-icons {
+  vertical-align: middle !important;
+}
+
+.my-container {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }

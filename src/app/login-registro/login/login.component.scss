@@ -1,12 +1,34 @@
-input {
-  border-width: 0 0 0.1em;
-  border-color: #fff;
-  border-style: solid;
-}
-.panel {
-  margin-top: 25vh;
-  padding-top: 2vh;
-  background-color: grey;
-  border-style: solid;
-  border-width: 0 0 0.1em;
+.my-container {
+  button {
+    width: 257px;
+  }
+  .row {
+    margin-left: 0 !important;
+    max-width: 1900px;
+  }
+  .card {
+    margin-top: 30vh;
+    width: 300px;
+  }
+  .front-cover {
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../../../assets/images/zane1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .logo-holder {
+    position: absolute;
+    z-index: 3;
+    margin-top: -36px;
+    margin-left: 50px;
+  }
+  .link-registro:hover {
+    color: purple;
+    cursor: pointer;
+  }
+  .link-registro{
+    box-shadow: 0px 20px 15px -9px rgba(0,0,0,0.75);
+  }
 }

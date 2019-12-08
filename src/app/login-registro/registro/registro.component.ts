@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
+import { RestManagerService } from "../../services/rest-manager.service";
+import { ApiRoutesConstants } from '../../constants/api-routes.constants';
 
 @Component({
   selector: "app-registro",
@@ -10,10 +12,7 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent implements OnInit {
   public formGroup: FormGroup;
-  constructor(
-    private http: HttpClient,
-    private route: Router
-    ) {}
+  constructor(private restService: RestManagerService, private route: Router) {}
 
   ngOnInit() {
     this.formGroup = new FormGroup({
@@ -29,8 +28,8 @@ export class RegistroComponent implements OnInit {
       password: this.formGroup.controls["password1"].value
     };
     if (this.formGroup.valid) {
-      this.http.post("http://localhost:3000/auth/signup/", body).subscribe(data => {
-        this.route.navigateByUrl("/login");
+      this.restService.post(ApiRoutesConstants.SIGNUP, body).subscribe(data => {
+        console.log(data);
       });
     }
   }

@@ -1,41 +1,51 @@
-<head>
-	<meta charset="utf-8" />
-	<title>FitWorld</title>
-	<meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
-</head>
-<body class="">
-	<section id="content" class="m-t-lg wrapper-md animated fadeInUp">    
-		<div class="container aside-xxl">
-			<section class="panel panel-default bg-white m-t-lg">
-				<header class="panel-heading text-center">
-					<strong>Sign in</strong>
-				</header>
-				<form action="index.html" class="panel-body wrapper-lg">
-					<div class="form-group">
-						<label class="control-label">Email</label>
-						<input type="email" placeholder="test@example.com" class="form-control input-lg">
-					</div>
-					<div class="form-group">
-						<label class="control-label">Password</label>
-						<input type="password" id="inputPassword" placeholder="Password" class="form-control input-lg">
-					</div>
-					<div class="checkbox">
-						<label>
-							<input type="checkbox"> Keep me logged in
-						</label>
-					</div>
-					<a href="#" class="pull-right m-t-xs"><small>Forgot password?</small></a>
-					<button type="submit" class="btn btn-primary">Sign in</button>
-					<div class="line line-dashed"></div>
-					<div class="line line-dashed"></div>
-					<p class="text-muted text-center"><small>Do not have an account?</small></p>
-          <button (click)="redirectRegistro()" mat-button>Regiter account</button>
-
-				</form>
-			</section>
-		</div>
-	</section>
-</body>
-
-           
+<div class="my-container justify-content-center">
+  <div class="row front-cover">
+    <div class="col-9"></div>
+    <div class="col-3">
+      <form [formGroup]="formGroup">
+        <div class="logo-holder">
+          <img src="assets/images/logoh.png" />
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="form-group">
+              <label>Username</label>
+              <input
+                placeholder="Enter a username"
+                class="form-control"
+                formControlName="username"
+              />
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Password"
+                formControlName="password"
+              />
+            </div>
+            <div class="row mb-3">
+              <button
+                libParticleEffectButton
+                pType="triangle"
+                pDuration="500"
+                [pParticlesAmountCoefficient]="3"
+                [pHidden]="hidden"
+                (click)="doLogin()"
+                class="btn btn-secondary"
+              >
+                Login
+              </button>
+            </div>
+            <div class="text-center">
+              <p (click)="redirectRegistro()" class="link-registro">
+                Enter the FitWorld
+              </p>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
