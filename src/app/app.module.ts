@@ -12,6 +12,7 @@ import { RegistroComponent } from "./login-registro/registro/registro.component"
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { HttpClientModule } from '@angular/common/http';
+import { ParticleEffectButtonModule } from "angular-particle-effect-button";
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, RegistroComponent],
@@ -26,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     ButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    ParticleEffectButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

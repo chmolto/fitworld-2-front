@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { RestManagerService } from '../../services/rest-manager.service';
-import { ApiRoutesConstants } from 'src/app/constants/api-routes.constants';
+import { RestManagerService } from "../../services/rest-manager.service";
+import { ApiRoutesConstants } from "src/app/constants/api-routes.constants";
 
 @Component({
   selector: "app-login",
@@ -11,9 +11,8 @@ import { ApiRoutesConstants } from 'src/app/constants/api-routes.constants';
 })
 export class LoginComponent implements OnInit {
   public formGroup: FormGroup;
-  constructor(
-    private route: Router,
-    private restService:RestManagerService) {}
+  public hidden: boolean;
+  constructor(private route: Router, private restService: RestManagerService) {}
 
   ngOnInit() {
     this.formGroup = new FormGroup({
@@ -23,6 +22,10 @@ export class LoginComponent implements OnInit {
   }
 
   public doLogin() {
+    this.hidden = true;
+    setTimeout(() => {
+      this.hidden = false;
+    }, 2000);
     let body = {
       username: this.formGroup.controls["username"].value,
       password: this.formGroup.controls["password"].value
