@@ -1,5 +1,45 @@
 .my-container {
   .card {
     width: 400px;
+    top: 10rem;
+    padding-top: 2rem;
+  }
+  .whole-logo {
+    .frame-logo {
+      background: #828282;
+      border-radius: 100%;
+      border: 3px solid cyan;
+      width: 208px;
+      height: 208px;
+      margin: 0 auto;
+      position: absolute;
+      z-index: 2;
+      margin-left: 90px;
+    }
+  }
+
+  button {
+    width: 358px;
+  }
+  footer {
+    position: absolute;
+    bottom: 0;
+    padding: 15px;
+    background: #111115;
+    width: 100%;
+    color: #a59f9f;
+  }
+
+  .card {
+    background-color: #828186;
+    border: 3px solid rgba(0, 0, 0, 0.36);
+  }
+
+  .btn-secondary {
+    background: rgba(0, 0, 0, 0.36);
+  }
+
+  label{
+    color: white;
   }
 }

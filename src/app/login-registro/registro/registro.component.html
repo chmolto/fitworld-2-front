@@ -1,14 +1,19 @@
 <div class="my-container">
-  <div class="row justify-content-center mt-2">
-    <img src="assets/images/logo1.gif" alt="logo" />
-  </div>
-  <div class="row justify-content-center mt-3">
+  <div class="row justify-content-center mt-5">
     <form [formGroup]="formGroup">
+      <div class="whole-logo">
+        <div class="frame-logo">
+          <img src="assets/images/logo1.gif" alt="logo" />
+        </div>
+      </div>
       <div class="card">
         <div class="card-body">
           <div class="form-group">
             <label>Username</label>
             <input
+              pTooltip="Enter your username"
+              tooltipPosition="left"
+              tooltipEvent="focus"
               placeholder="Enter a username"
               class="form-control"
               formControlName="username"
@@ -17,6 +22,9 @@
           <div class="form-group">
             <label>Password</label>
             <input
+              pTooltip="Enter your password"
+              tooltipPosition="left"
+              tooltipEvent="focus"
               type="password"
               class="form-control"
               placeholder="Password"
@@ -26,20 +34,31 @@
           <div class="form-group">
             <label>Repeat password</label>
             <input
+              pTooltip="Repeat your password"
+              tooltipPosition="left"
+              tooltipEvent="focus"
               type="password"
               class="form-control"
-              placeholder="Password"
+              placeholder="Repeat password"
               formControlName="password2"
             />
           </div>
-          <div class="alert alert-danger">
-            Please, check <b>all</b> the fields are correct
-          </div>
-          <button (click)="doRegister()" class="btn btn-secondary btn-block">
-            Submit
+          <button
+            libParticleEffectButton
+            pType="triangle"
+            pDuration="500"
+            [pParticlesAmountCoefficient]="3"
+            [pHidden]="hidden"
+            (click)="checkForm()"
+            class="btn btn-secondary mt-5"
+          >
+            Join our world
           </button>
         </div>
       </div>
     </form>
   </div>
+  <footer class="text-center">
+    FitWorld 2019 ©
+  </footer>
 </div>

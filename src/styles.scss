@@ -1,11 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+/* CLASES GLOBALS */
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 html {
   background: #0a0a0c;
   body {
     background: #0a0a0c;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    height: 100%;
   }
+}
+
+.form-control:focus {
+  border-color: #19f5f5 !important;
+  box-shadow: 0 0 0 0.2rem #19f5f547 !important;
 }
 
 .pi {
