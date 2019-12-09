@@ -1,3 +1,4 @@
+import { MessageService } from 'primeng/api';
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -15,7 +16,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { ParticleEffectButtonModule } from "angular-particle-effect-button";
 import { MatSnackBarModule } from "@angular/material";
 import { HomeComponent } from "./login-registro/home/home.component";
-import {TooltipModule} from 'primeng/tooltip';
+import { TooltipModule } from "primeng/tooltip";
+import { ToastModule } from "primeng/toast";
 
 @NgModule({
   declarations: [
@@ -39,8 +41,9 @@ import {TooltipModule} from 'primeng/tooltip';
     ParticleEffectButtonModule,
     MatSnackBarModule,
     TooltipModule,
+    ToastModule,
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,32 +1,38 @@
+<p-toast></p-toast>
 <div class="my-container">
   <div class="row justify-content-center mt-5">
     <form [formGroup]="formGroup">
-      <div class="whole-logo">
-        <div class="frame-logo">
-          <img src="assets/images/logo1.gif" alt="logo" />
-        </div>
-      </div>
+      <div class="frame-logo"></div>
+      <img src="assets/images/logo1.gif" alt="logo" class="logo" />
       <div class="card">
         <div class="card-body">
           <div class="form-group">
             <label>Username</label>
             <input
+              [ngClass]="{
+                'is-valid': usernameControl == true,
+                'is-invalid': usernameControl == false
+              }"
               pTooltip="Enter your username"
               tooltipPosition="left"
               tooltipEvent="focus"
               placeholder="Enter a username"
-              class="form-control"
+              class="form-control is-valid"
               formControlName="username"
             />
           </div>
           <div class="form-group">
             <label>Password</label>
             <input
+              [ngClass]="{
+                'is-valid': password1Control == true,
+                'is-invalid': password1Control == false
+              }"
               pTooltip="Enter your password"
               tooltipPosition="left"
               tooltipEvent="focus"
               type="password"
-              class="form-control"
+              class="form-control is-invalid"
               placeholder="Password"
               formControlName="password1"
             />
@@ -34,6 +40,10 @@
           <div class="form-group">
             <label>Repeat password</label>
             <input
+              [ngClass]="{
+                'is-valid': password2Control == true,
+                'is-invalid': password2Control == false
+              }"
               pTooltip="Repeat your password"
               tooltipPosition="left"
               tooltipEvent="focus"
@@ -42,6 +52,25 @@
               placeholder="Repeat password"
               formControlName="password2"
             />
+            <small class="pt-1" *ngIf="password2Control == false"
+              >* Both passwords must match</small
+            >
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input
+              [ngClass]="{
+                'is-valid': emailControl == true,
+                'is-invalid': emailControl == false
+              }"
+              pTooltip="Enter your email"
+              tooltipPosition="left"
+              tooltipEvent="focus"
+              type="email"
+              class="form-control"
+              placeholder="Enter an email"
+              formControlName="email"
+            />
           </div>
           <button
             libParticleEffectButton
@@ -49,7 +78,7 @@
             pDuration="500"
             [pParticlesAmountCoefficient]="3"
             [pHidden]="hidden"
-            (click)="checkForm()"
+            (click)="doRegister()"
             class="btn btn-secondary mt-5"
           >
             Join our world
