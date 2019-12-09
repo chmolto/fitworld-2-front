@@ -34,16 +34,14 @@ export class RegistroComponent implements OnInit {
         Validators.required
       ]),
       password1: new FormControl("", [
+        Validators.required,
         Validators.minLength(5),
         Validators.maxLength(20),
-        Validators.pattern(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/),
-        Validators.required
+        Validators.pattern(
+          /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/
+        ),
       ]),
-      password2: new FormControl("", [
-        Validators.minLength(5),
-        Validators.maxLength(20),
-        Validators.required
-      ]),
+      password2: new FormControl("", Validators.required),
       email: new FormControl("", [Validators.email, Validators.required])
     });
     this.controlInputsStatus();
@@ -58,8 +56,12 @@ export class RegistroComponent implements OnInit {
       this.password1Control = status === "INVALID" ? false : true;
     });
 
-    this.formGroup.controls["password2"].statusChanges.subscribe(status => {
-      this.password2Control = status === "INVALID" ? false : true;
+    this.formGroup.controls["password2"].valueChanges.subscribe(value => {
+      if (value === this.formGroup.controls["password1"].value) {
+        this.password2Control = true;
+      } else {
+        this.password2Control = false;
+      }
     });
 
     this.formGroup.controls["email"].statusChanges.subscribe(status => {
