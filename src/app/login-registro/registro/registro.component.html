@@ -7,20 +7,37 @@
       <div class="card">
         <div class="card-body">
           <div class="form-group">
-            <label>Username</label>
+            <div class="form-group">
+              <label>Username</label>
+              <input
+                [ngClass]="{
+                  'is-valid': usernameControl == true,
+                  'is-invalid': usernameControl == false
+                }"
+                pTooltip="Enter your username"
+                tooltipPosition="left"
+                tooltipEvent="focus"
+                placeholder="Enter a username"
+                class="form-control is-valid"
+                formControlName="username"
+              />
+            </div>
+            <label>Email</label>
             <input
               [ngClass]="{
-                'is-valid': usernameControl == true,
-                'is-invalid': usernameControl == false
+                'is-valid': emailControl == true,
+                'is-invalid': emailControl == false
               }"
-              pTooltip="Enter your username"
+              pTooltip="Enter your email"
               tooltipPosition="left"
               tooltipEvent="focus"
-              placeholder="Enter a username"
-              class="form-control is-valid"
-              formControlName="username"
+              type="email"
+              class="form-control"
+              placeholder="Enter an email"
+              formControlName="email"
             />
           </div>
+
           <div class="form-group">
             <label>Password</label>
             <input
@@ -55,22 +72,6 @@
             <small class="pt-1" *ngIf="password2Control == false"
               >* Both passwords must match</small
             >
-          </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input
-              [ngClass]="{
-                'is-valid': emailControl == true,
-                'is-invalid': emailControl == false
-              }"
-              pTooltip="Enter your email"
-              tooltipPosition="left"
-              tooltipEvent="focus"
-              type="email"
-              class="form-control"
-              placeholder="Enter an email"
-              formControlName="email"
-            />
           </div>
           <button
             libParticleEffectButton

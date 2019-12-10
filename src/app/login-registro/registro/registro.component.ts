@@ -39,10 +39,13 @@ export class RegistroComponent implements OnInit {
         Validators.maxLength(20),
         Validators.pattern(
           /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/
-        ),
+        )
       ]),
       password2: new FormControl("", Validators.required),
-      email: new FormControl("", [Validators.email, Validators.required])
+      email: new FormControl("", [
+        Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/),
+        Validators.required
+      ])
     });
     this.controlInputsStatus();
   }
