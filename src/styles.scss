@@ -11,21 +11,41 @@ html {
   }
 }
 
+/** Bootstrap Input */
 .form-control:focus {
   border-color: #19f5f5 !important;
   box-shadow: 0 0 0 0.2rem #19f5f547 !important;
 }
+.form-control{
+  background-color: #F3EFF5;
+}
 
+/** Primeicons */
 .pi {
   vertical-align: middle !important;
 }
 
+/** Material icons */
 .material-icons {
   vertical-align: middle !important;
 }
 
+/** Substitut de container de bootstrap */
 .my-container {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+}
+
+/** Primeng Toast */
+.ui-toast-message-error {
+  background-color: #a92424e0 !important;
+}
+
+.ui-toast-summary{
+  color: white;
+}
+
+.ui-toast-detail{
+  color:white
 }
