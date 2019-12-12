@@ -43,8 +43,7 @@ export class RegistroComponent implements OnInit {
       ]),
       password2: new FormControl("", Validators.required),
       email: new FormControl("", [
-        Validators.pattern(
-          /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/),
+        Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/),
         Validators.required
       ])
     });
@@ -78,6 +77,10 @@ export class RegistroComponent implements OnInit {
       this.formGroup.controls["password1"].value ===
       this.formGroup.controls["password2"].value
     );
+  }
+
+  public redirectLogin() {
+    this.route.navigateByUrl("/login");
   }
 
   private checkForm(): boolean {

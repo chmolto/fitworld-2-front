@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
       this.restService.post(ApiRoutesConstants.SIGNIN, body).subscribe(data => {
         if (data.accessToken) {
           setTimeout(() => {
+            this.restService.storeJwt(data.accessToken);
             this.route.navigateByUrl("/home");
           }, 1000);
         } else {

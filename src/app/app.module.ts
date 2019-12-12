@@ -18,6 +18,7 @@ import { MatSnackBarModule } from "@angular/material";
 import { HomeComponent } from "./login-registro/home/home.component";
 import { TooltipModule } from "primeng/tooltip";
 import { ToastModule } from "primeng/toast";
+import { RestManagerService } from './services/rest-manager.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { ToastModule } from "primeng/toast";
     TooltipModule,
     ToastModule,
   ],
-  providers: [MessageService],
+  providers: [MessageService, RestManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

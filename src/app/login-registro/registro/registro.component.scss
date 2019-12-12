@@ -59,4 +59,23 @@
     position: absolute;
     padding-left: 179px;
   }
+
+  .button-login{
+    background-color: #212121;
+    color: #9a9a9a;
+    width: 100px;
+    z-index: 30;
+    border-radius: 3px;
+    top: 10px;
+    position: absolute;
+    left: 10px;
+    font-size: 0.8em;
+    padding: 3px;
+    cursor: pointer;
+    padding-left: 0;
+  }
+
+  .material-icons{
+    font-size: 15px !important;
+  }
 }
