@@ -1,1 +1,20 @@
-<button mat-button (click)="testJWT()">Test JWT</button>>
+<div class="my-container">
+  <div class="row topbar">
+      <img src="assets/images/logoh.png">
+  </div>
+  <div class="row">
+    <button mat-button (click)="testJWT()">Test JWT</button>>
+
+    <p-sidebar [(visible)]="display">
+      Content
+    </p-sidebar>
+
+    <button
+      type="text"
+      (click)="display = true"
+      pButton
+      icon="pi pi-plus"
+      label="Show"
+    ></button>
+  </div>
+</div>

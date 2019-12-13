@@ -7,7 +7,8 @@ import { of } from "rxjs";
   providedIn: "root"
 })
 export class RestManagerService {
-  public headers: HttpHeaders;
+  private headers: HttpHeaders;
+  private jwt: string;
 
   constructor(private http: HttpClient) {
     this.headers = new HttpHeaders();
@@ -19,7 +20,12 @@ export class RestManagerService {
   }
 
   public setJwt(jwt: string) {
+    this.jwt = jwt;
     this.headers = this.headers.set("Authorization", `Bearer ${jwt}`);
+  }
+
+  public getJwt() {
+    return this.jwt;
   }
 
   public post(ruta: string, body: any) {

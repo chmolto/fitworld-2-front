@@ -8,7 +8,7 @@ import { RestManagerService } from "../../services/rest-manager.service";
 })
 export class HomeComponent implements OnInit {
   constructor(private restService: RestManagerService) {}
-
+  public display: boolean;
   ngOnInit() {}
 
   public testJWT() {

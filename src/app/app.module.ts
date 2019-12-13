@@ -1,4 +1,4 @@
-import { MessageService } from 'primeng/api';
+import { MessageService } from "primeng/api";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -18,7 +18,9 @@ import { MatSnackBarModule } from "@angular/material";
 import { HomeComponent } from "./login-registro/home/home.component";
 import { TooltipModule } from "primeng/tooltip";
 import { ToastModule } from "primeng/toast";
-import { RestManagerService } from './services/rest-manager.service';
+import { RestManagerService } from "./services/rest-manager.service";
+import { SessionGuardian } from "./services/guardians/session-guardian";
+import { SidebarModule } from "primeng/sidebar";
 
 @NgModule({
   declarations: [
@@ -43,8 +45,9 @@ import { RestManagerService } from './services/rest-manager.service';
     MatSnackBarModule,
     TooltipModule,
     ToastModule,
+    SidebarModule,
   ],
-  providers: [MessageService, RestManagerService],
+  providers: [MessageService, RestManagerService, SessionGuardian],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
