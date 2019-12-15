@@ -9,7 +9,6 @@ import { RestManagerService } from '../rest-manager.service';
 export class SessionGuardian implements CanActivate {
   constructor(private router:Router, private restService:RestManagerService) {}
   canActivate() {
-    console.log(this.restService.getJwt());
     return this.restService.getJwt() ? true : this.router.navigateByUrl("/login");
   }
 }

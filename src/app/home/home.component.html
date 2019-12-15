@@ -1,0 +1,27 @@
+<div id="home" class="my-container">
+  <div class="row topbar">
+    <img src="assets/images/logoh.png" />
+    <div class="botonera float-right">
+      <div class="btn-botonera">
+        <i class="material-icons">settings_applications</i>
+      </div>
+      <div class="btn-botonera">
+        <i class="material-icons">account_circle</i>
+      </div>
+      <div class="btn-botonera">
+        <i class="material-icons">exit_to_app</i>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <p-sidebar [(visible)]="display" (mouseleave)="display = false">
+      Content
+    </p-sidebar>
+    <div class="sidebar-trigger" (mouseenter)="display = true">
+      <div class="img-frame"></div>
+      <img (click)="display = true" src="assets/images/load1.gif" />
+      <p>FitWorld ©</p>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

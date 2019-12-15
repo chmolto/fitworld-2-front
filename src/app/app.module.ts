@@ -15,7 +15,7 @@ import { MatInputModule } from "@angular/material/input";
 import { HttpClientModule } from "@angular/common/http";
 import { ParticleEffectButtonModule } from "angular-particle-effect-button";
 import { MatSnackBarModule } from "@angular/material";
-import { HomeComponent } from "./login-registro/home/home.component";
+import { HomeComponent } from "./home/home.component";
 import { TooltipModule } from "primeng/tooltip";
 import { ToastModule } from "primeng/toast";
 import { RestManagerService } from "./services/rest-manager.service";
