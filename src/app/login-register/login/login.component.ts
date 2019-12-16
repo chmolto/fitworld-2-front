@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
         if (data.accessToken) {
           setTimeout(() => {
             this.restService.storeJwt(data.accessToken);
-            this.route.navigateByUrl("/home");
+            this.route.navigateByUrl("/index");
           }, 1000);
         } else {
           setTimeout(() => {
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  public redirectRegistro() {
-    this.route.navigateByUrl("/registro");
+  public redirectRegister() {
+    this.route.navigateByUrl("/register");
   }
 }

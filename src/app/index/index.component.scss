@@ -9,14 +9,18 @@
       right: 32px;
       display: -webkit-inline-box;
       position: absolute;
-      margin-top: 8px;
+      margin-top: 13px;
       .btn-botonera {
         color: #ababab;
         cursor: pointer;
-        .material-icons {
-          font-size: 44px !important;
+        .fas {
+          font-size: 32px !important;
+          padding-left: 13px;
         }
-        .material-icons:hover {
+        .fa-sign-out-alt {
+          font-size: 38px !important;
+        }
+        .fas:hover {
           transition: 0.5s;
           color: rgba(97, 255, 255, 0.753);
         }

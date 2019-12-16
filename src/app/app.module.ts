@@ -8,26 +8,36 @@ import { DropdownModule } from "primeng/dropdown";
 import { InputTextModule } from "primeng/inputtext";
 import { ButtonModule } from "primeng/button";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { LoginComponent } from "./login-registro/login/login.component";
-import { RegistroComponent } from "./login-registro/registro/registro.component";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { HttpClientModule } from "@angular/common/http";
 import { ParticleEffectButtonModule } from "angular-particle-effect-button";
 import { MatSnackBarModule } from "@angular/material";
-import { HomeComponent } from "./home/home.component";
 import { TooltipModule } from "primeng/tooltip";
 import { ToastModule } from "primeng/toast";
 import { RestManagerService } from "./services/rest-manager.service";
 import { SessionGuardian } from "./services/guardians/session-guardian";
 import { SidebarModule } from "primeng/sidebar";
+import { RegisterComponent } from './login-register/register/register.component';
+import { LoginComponent } from './login-register/login/login.component';
+import { ActiveRoutineComponent } from './routines/active-routine/active-routine.component';
+import { AllRoutinesComponent } from './routines/all-routines/all-routines.component';
+import { IndexComponent } from './index/index.component';
+import { MainComponent } from './main/main/main.component';
+import { ProfileComponent } from './main/profile/profile.component';
+import { SettingsComponent } from './main/settings/settings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistroComponent,
-    HomeComponent
+    RegisterComponent,
+    IndexComponent,
+    ActiveRoutineComponent,
+    AllRoutinesComponent,
+    MainComponent,
+    ProfileComponent,
+    SettingsComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -45,7 +55,7 @@ import { SidebarModule } from "primeng/sidebar";
     MatSnackBarModule,
     TooltipModule,
     ToastModule,
-    SidebarModule,
+    SidebarModule
   ],
   providers: [MessageService, RestManagerService, SessionGuardian],
   bootstrap: [AppComponent]

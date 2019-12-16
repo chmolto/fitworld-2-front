@@ -5,20 +5,20 @@ import { SessionGuardian } from '../services/guardians/session-guardian';
 import { UserSessionService } from '../services/user-session.service';
 
 @Component({
-  selector: "app-home",
-  templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.scss"],
+  selector: "app-index",
+  templateUrl: "./index.component.html",
+  styleUrls: ["./index.component.scss"],
   encapsulation: ViewEncapsulation.None
 })
-export class HomeComponent implements OnInit {
-  constructor(private restService: RestManagerService, private route: Router) {}
+export class IndexComponent implements OnInit {
+  constructor(private restService: RestManagerService, public router: Router) {}
   public display: boolean;
 
   ngOnInit() {}
 
   public logout() {
-    this.restService.storeJwt("");
+    this.restService.storeJwt(null);
     sessionStorage.removeItem('jwt');
-    this.route.navigateByUrl("/login");
+    this.router.navigateByUrl("/login");
   }
 }

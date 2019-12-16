@@ -6,11 +6,11 @@ import { ApiRoutesConstants } from "../../constants/api-routes.constants";
 import { MessageService } from "primeng/api";
 
 @Component({
-  selector: "app-registro",
-  templateUrl: "./registro.component.html",
-  styleUrls: ["./registro.component.scss"]
+  selector: "app-register",
+  templateUrl: "./register.component.html",
+  styleUrls: ["./register.component.scss"]
 })
-export class RegistroComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   public formGroup: FormGroup;
   public hidden: boolean;
 

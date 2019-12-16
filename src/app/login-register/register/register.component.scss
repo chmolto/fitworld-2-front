@@ -3,6 +3,8 @@
     width: 400px;
     top: 10rem;
     padding-top: 2rem;
+    background-color: #454955;
+    border: 3px solid rgba(0, 0, 0, 0.36);
   }
 
   .frame-logo {
@@ -19,7 +21,7 @@
     margin-left: 90px;
   }
 
-  .logo{
+  .logo {
     vertical-align: middle;
     border-style: none;
     z-index: 2;
@@ -40,11 +42,6 @@
     color: #a59f9f;
   }
 
-  .card {
-    background-color: #454955;
-    border: 3px solid rgba(0, 0, 0, 0.36);
-  }
-
   .btn-secondary {
     background: #9ea3b0;
   }
@@ -53,14 +50,14 @@
     color: white;
   }
 
-  small{
+  small {
     float: right;
     color: crimson;
     position: absolute;
     padding-left: 179px;
   }
 
-  .button-login{
+  .button-login {
     background-color: #212121;
     color: #9a9a9a;
     width: 100px;
@@ -75,7 +72,7 @@
     padding-left: 0;
   }
 
-  .material-icons{
+  .material-icons {
     font-size: 15px !important;
   }
 }

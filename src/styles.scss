@@ -12,8 +12,8 @@ html {
 }
 
 /** Bootstrap Input */
-.form-control{
-  background-color: #F3EFF5;
+.form-control {
+  background-color: #f3eff5;
 }
 
 /** Primeicons */
@@ -23,6 +23,11 @@ html {
 
 /** Material icons */
 .material-icons {
+  vertical-align: middle !important;
+}
+
+/** Font Awesome */
+.fas {
   vertical-align: middle !important;
 }
 
@@ -37,11 +42,15 @@ html {
 .ui-toast-message-error {
   background-color: #a92424e0 !important;
 }
-
-.ui-toast-summary{
+.ui-toast-summary {
+  color: white;
+}
+.ui-toast-detail {
   color: white;
 }
 
-.ui-toast-detail{
-  color:white
+/** Bootstrap input disabled */
+.form-control:disabled {
+  background-color: #afb1b3 !important;
+  border: 1px solid gray !important;
 }

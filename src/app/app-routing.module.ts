@@ -1,9 +1,14 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { LoginComponent } from "./login-registro/login/login.component";
-import { RegistroComponent } from "./login-registro/registro/registro.component";
-import { HomeComponent } from './home/home.component';
-import { SessionGuardian } from './services/guardians/session-guardian';
+import { IndexComponent } from "./index/index.component";
+import { SessionGuardian } from "./services/guardians/session-guardian";
+import { RegisterComponent } from "./login-register/register/register.component";
+import { LoginComponent } from "./login-register/login/login.component";
+import { ActiveRoutineComponent } from "./routines/active-routine/active-routine.component";
+import { AllRoutinesComponent } from "./routines/all-routines/all-routines.component";
+import { MainComponent } from './main/main/main.component';
+import { ProfileComponent } from './main/profile/profile.component';
+import { SettingsComponent } from './main/settings/settings.component';
 
 const routes: Routes = [
   {
@@ -11,13 +16,35 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: "registro",
-    component: RegistroComponent
+    path: "register",
+    component: RegisterComponent
   },
   {
-    path: "home",
-    component: HomeComponent,
-    canActivate: [SessionGuardian]
+    path: "index",
+    component: IndexComponent,
+    canActivate: [SessionGuardian],
+    children: [
+      {
+        path: "",
+        component: MainComponent
+      },
+      {
+        path: "profile",
+        component: ProfileComponent
+      },
+      {
+        path: "settings",
+        component: SettingsComponent
+      },
+      {
+        path: "routines/active",
+        component: SettingsComponent
+      },
+      {
+        path: "routines/all",
+        component: SettingsComponent
+      }
+    ]
   },
   { path: "", redirectTo: "/login", pathMatch: "full" },
   { path: "**", component: LoginComponent }
