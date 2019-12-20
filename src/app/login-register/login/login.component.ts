@@ -14,6 +14,9 @@ import { catchError } from "rxjs/operators";
 export class LoginComponent implements OnInit {
   public formGroup: FormGroup;
   public hidden: boolean;
+  public animateLink: boolean;
+  public animateTwitter: boolean;
+  public animateGoogle: boolean;
   constructor(
     private route: Router,
     private restService: RestManagerService,
@@ -21,10 +24,23 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.animateGoogle = false;
+    this.animateTwitter = false;
     this.formGroup = new FormGroup({
       username: new FormControl("", Validators.required),
       password: new FormControl("", Validators.required)
     });
+  }
+
+  public setAnimation(type: string) {
+    switch (type) {
+      case "twitter":
+        this.animateTwitter = !this.animateTwitter;
+        break;
+      case "google":
+        this.animateGoogle = !this.animateGoogle;
+        break;
+    }
   }
 
   public doLogin() {

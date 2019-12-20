@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
     "angular-particle-effect-button": "0.0.43",
+    "animate.css": "^3.7.2",
     "animejs": "^3.1.0",
     "bootstrap": "^4.4.1",
     "core-js": "^2.5.4",
