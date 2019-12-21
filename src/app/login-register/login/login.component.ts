@@ -50,21 +50,21 @@ export class LoginComponent implements OnInit {
         username: this.formGroup.controls["username"].value,
         password: this.formGroup.controls["password"].value
       };
-      this.restService.post(ApiRoutesConstants.SIGNIN, body).subscribe(data => {
-        if (data.accessToken) {
-          setTimeout(() => {
-            this.restService.storeJwt(data.accessToken);
-            this.route.navigateByUrl("/index");
-          }, 1000);
-        } else {
-          setTimeout(() => {
-            this._snackBar.open("Invalid credentials.", "", {
-              duration: 2000
-            });
-            this.hidden = false;
-          }, 2000);
-        }
-      });
+      this.restService
+        .post(ApiRoutesConstants.SIGNIN, body, ApiRoutesConstants.SIGNIN_REMOTE)
+        .subscribe(data => {
+          if (data.accessToken) {
+              this.restService.storeJwt(data.accessToken);
+              this.route.navigateByUrl("/index");
+          } else {
+            setTimeout(() => {
+              this._snackBar.open("Invalid credentials.", "", {
+                duration: 2000
+              });
+              this.hidden = false;
+            }, 2000);
+          }
+        });
     } else {
       this._snackBar.open("Please enter username and password.", "", {
         duration: 2000

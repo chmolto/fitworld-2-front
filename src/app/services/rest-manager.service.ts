@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { catchError } from "rxjs/operators";
-import { of } from "rxjs";
+import { of, concat } from "rxjs";
+import { ApiRoutesConstants } from "../constants/api-routes.constants";
 
 @Injectable({
   providedIn: "root"
@@ -28,9 +29,21 @@ export class RestManagerService {
     return this.jwt;
   }
 
-  public post(ruta: string, body: any) {
+  public post(ruta: string, body: any, rutaRetry?: string) {
     return this.http
       .post(ruta, body, {
+        headers: this.headers
+      })
+      .pipe(
+        catchError(err =>
+          rutaRetry ? this.retryOnlineBack(rutaRetry, body) : of(err)
+        )
+      );
+  }
+
+  private retryOnlineBack(rutaRetry: string, body: any) {
+    return this.http
+      .post(rutaRetry, body, {
         headers: this.headers
       })
       .pipe(catchError(err => of(err)));

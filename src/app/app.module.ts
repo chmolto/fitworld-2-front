@@ -18,14 +18,18 @@ import { ToastModule } from "primeng/toast";
 import { RestManagerService } from "./services/rest-manager.service";
 import { SessionGuardian } from "./services/guardians/session-guardian";
 import { SidebarModule } from "primeng/sidebar";
-import { RegisterComponent } from './login-register/register/register.component';
-import { LoginComponent } from './login-register/login/login.component';
-import { ActiveRoutineComponent } from './routines/active-routine/active-routine.component';
-import { AllRoutinesComponent } from './routines/all-routines/all-routines.component';
-import { IndexComponent } from './index/index.component';
-import { MainComponent } from './main/main/main.component';
-import { ProfileComponent } from './main/profile/profile.component';
-import { SettingsComponent } from './main/settings/settings.component';
+import { RegisterComponent } from "./login-register/register/register.component";
+import { LoginComponent } from "./login-register/login/login.component";
+import { ActiveRoutineComponent } from "./routines/active-routine/active-routine.component";
+import { AllRoutinesComponent } from "./routines/all-routines/all-routines.component";
+import { IndexComponent } from "./index/index.component";
+import { MainComponent } from "./main/main/main.component";
+import { ProfileComponent } from "./main/profile/profile.component";
+import { SettingsComponent } from "./main/settings/settings.component";
+import { FileUploadModule } from "primeng/fileupload";
+import { MatDialogModule } from "@angular/material/dialog";
+import { DialogImgCropperComponent } from './utilities/dialog-img-cropper/dialog-img-cropper.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,8 @@ import { SettingsComponent } from './main/settings/settings.component';
     AllRoutinesComponent,
     MainComponent,
     ProfileComponent,
-    SettingsComponent
+    SettingsComponent,
+    DialogImgCropperComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -55,9 +60,13 @@ import { SettingsComponent } from './main/settings/settings.component';
     MatSnackBarModule,
     TooltipModule,
     ToastModule,
-    SidebarModule
+    SidebarModule,
+    FileUploadModule,
+    MatDialogModule,
+    ImageCropperModule,
   ],
   providers: [MessageService, RestManagerService, SessionGuardian],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogImgCropperComponent]
 })
 export class AppModule {}

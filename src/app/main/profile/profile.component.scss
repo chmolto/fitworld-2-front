@@ -1,9 +1,62 @@
 .my-container {
-  .profile-form {
-    top: 10rem;
-    border-radius: 12px;
-    padding: 30px 500px 30px 70px;
-    background-color: #454955;
-    border: 3px solid rgba(0, 0, 0, 0.36);
+  .title-container {
+    color: #17a2b8;
+    border: 1px solid #17a2b8;
+    border-radius: 3px;
+    .h1 {
+      font-weight: 100 !important;
+    }
+  }
+
+  .input-desblock {
+    label {
+      color: whitesmoke;
+    }
+    .input {
+      .form-control {
+        float: left;
+        width: 85%;
+        display: inline-block !important;
+      }
+      .block-btn {
+        display: inline-block;
+        float: left;
+      }
+    }
+  }
+
+  .fileupload {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fileupload input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    font-size: 300px;
+    height: 200px;
+  }
+
+  .img-container {
+    max-height: 400px;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  .img-remover {
+    position: absolute;
+    color: red;
+    top: 0;
+    opacity: 0.5;
+    height: 100%;
+    margin-bottom: -50px;
+  }
+
+  .fa-ban {
+    font-size: 3vw !important;
   }
 }

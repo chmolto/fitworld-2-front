@@ -1,23 +1,94 @@
 <div class="my-container">
   <div class="row justify-content-center">
-    <form formGroup="formGroup">
-      <div class="profile-form">
-        <div class="username">
-          <label>Username</label>
-          <input disabled placeholder="Enter a username" class="form-control" />
-          <button class="btn btn-success">
-            <i class="fas fa-lock"></i>
+    <div class="profile-form col-6 w-100">
+      <div class="title-container text-center mt-3 mb-3">
+        <p class="h1">User settings</p>
+      </div>
+      <form [formGroup]="formGroup">
+        <div class="row justify-content-between">
+          <div class="col-4">
+            <div class="input-desblock">
+              <label>Username</label>
+              <div class="input">
+                <input
+                  placeholder="Enter a username"
+                  class="form-control"
+                  formControlName="username"
+                />
+                <button class="btn btn-success block-btn">
+                  <i class="fas fa-lock"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="input-desblock mt-2">
+              <label>Username</label>
+              <div class="input">
+                <input
+                  placeholder="Enter a username"
+                  class="form-control"
+                  formControlName="password"
+                />
+                <button class="btn btn-success block-btn">
+                  <i class="fas fa-lock"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="input-desblock mt-2">
+              <label>Username</label>
+              <div class="input">
+                <input
+                  placeholder="Enter a username"
+                  class="form-control"
+                  formControlName="passwordRepeat"
+                />
+                <button class="btn btn-success block-btn">
+                  <i class="fas fa-lock"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="row">
+              <div
+                class="img-container"
+                (mouseenter)="showRemove = !showRemove"
+                (mouseleave)="showRemove = !showRemove"
+              >
+                <img
+                  class="w-100 mt-2 mr-2"
+                  [src]="selectedImage ? selectedImage : defaultImage"
+                />
+                <div
+                  *ngIf="showRemove"
+                  class="img-remover w-100"
+                  (click)="selectedImage = defaultImage"
+                >
+                  <i class="fas fa-ban"></i>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="fileupload w-100 btn btn-outline-info">
+                <input
+                  type="file"
+                  (change)="handleFileInput($event.target.files)"
+                />
+                Upload image
+                <i class="fas fa-file-upload ml-1"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center upload">
+          <button class="btn btn-outline-success mt-5">
+            Update profile
+            <i class="fas fa-save pl-2"></i>
           </button>
         </div>
-        <label>Username</label>
-        <input placeholder="Enter a username" class="form-control is-valid" />
-        <label>Username</label>
-        <input placeholder="Enter a username" class="form-control is-valid" />
-        <button class="btn btn-success mt-5">
-          Save changes
-          <i class="fas fa-save pl-2"></i>
-        </button>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>

@@ -14,12 +14,12 @@
     </div>
   </div>
   <div class="row">
-    <p-sidebar [(visible)]="display" (mouseleave)="display = false">
+    <p-sidebar [(visible)]="displaySidebar" (mouseleave)="triggerSidebar()">
       Content
     </p-sidebar>
-    <div class="sidebar-trigger" (mouseenter)="display = true">
+    <div class="sidebar-trigger" (mouseenter)="triggerSidebar()">
       <div class="img-frame"></div>
-      <img (click)="display = true" src="assets/images/load1.gif" />
+      <img src="assets/images/load1.gif" />
       <p>FitWorld ©</p>
     </div>
     <router-outlet></router-outlet>

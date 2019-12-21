@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { RestManagerService } from "../services/rest-manager.service";
 import { Router } from "@angular/router";
-import { SessionGuardian } from '../services/guardians/session-guardian';
-import { UserSessionService } from '../services/user-session.service';
+import { SessionGuardian } from "../services/guardians/session-guardian";
+import { UserSessionService } from "../services/user-session.service";
 
 @Component({
   selector: "app-index",
@@ -11,14 +11,20 @@ import { UserSessionService } from '../services/user-session.service';
   encapsulation: ViewEncapsulation.None
 })
 export class IndexComponent implements OnInit {
-  constructor(private restService: RestManagerService, public router: Router) {}
-  public display: boolean;
+  constructor(private restService: RestManagerService, public router: Router) {
+    this.displaySidebar = false;
+  }
+  public displaySidebar: boolean;
 
   ngOnInit() {}
 
   public logout() {
     this.restService.storeJwt(null);
-    sessionStorage.removeItem('jwt');
+    sessionStorage.removeItem("jwt");
     this.router.navigateByUrl("/login");
+  }
+
+  public triggerSidebar() {
+    this.displaySidebar = !this.displaySidebar;
   }
 }
