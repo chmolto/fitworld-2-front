@@ -15,11 +15,6 @@ export class RestManagerService {
     this.headers = new HttpHeaders();
   }
 
-  public storeJwt(jwt: string) {
-    sessionStorage.setItem("jwt", jwt);
-    this.setJwt(jwt);
-  }
-
   public setJwt(jwt: string) {
     this.jwt = jwt;
     this.headers = this.headers.set("Authorization", `Bearer ${jwt}`);

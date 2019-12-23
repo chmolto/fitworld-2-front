@@ -14,7 +14,7 @@ import { ImageCropperComponent } from "ngx-image-cropper";
   templateUrl: "./dialog-img-cropper.component.html",
   styleUrls: ["./dialog-img-cropper.component.scss"]
 })
-export class DialogImgCropperComponent implements OnInit {
+export class DialogImgCropperComponent {
   @Output()
   public croppedImgEmit = new EventEmitter<string>();
   public croppedImg: string;
@@ -26,7 +26,6 @@ export class DialogImgCropperComponent implements OnInit {
     public dialogRef: MatDialogRef<DialogImgCropperComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    console.log(data);
     this.flipHorizontalIcon = true;
     this.flipVerticalIcon = true;
   }

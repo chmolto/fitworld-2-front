@@ -113,18 +113,23 @@ export class RegisterComponent implements OnInit {
         password: this.formGroup.controls["password1"].value,
         email: this.formGroup.controls["email"].value
       };
-      this.restService.post(ApiRoutesConstants.SIGNUP, body).subscribe(data => {
-        if (!data) {
-          setTimeout(() => {
-            this.route.navigateByUrl("/login");
-          }, 1000);
-        } else {
-          setTimeout(() => {
-            alert(data.error.message[0].constraints.matches);
-            this.hidden = false;
-          }, 2000);
-        }
-      });
+      this.restService
+        .post(ApiRoutesConstants.SIGNUP, body, ApiRoutesConstants.SIGNUP_REMOTE)
+        .subscribe(data => {
+          this.handleRegisterResponse(data);
+        });
+    }
+  }
+
+  private handleRegisterResponse(data) {
+    if (!data) {
+      setTimeout(() => {
+        this.route.navigateByUrl("/login");
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        this.hidden = false;
+      }, 2000);
     }
   }
 }

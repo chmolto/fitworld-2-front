@@ -19,8 +19,8 @@ export class IndexComponent implements OnInit {
   ngOnInit() {}
 
   public logout() {
-    this.restService.storeJwt(null);
-    sessionStorage.removeItem("jwt");
+    this.restService.setJwt(null);
+    localStorage.removeItem("jwt");
     this.router.navigateByUrl("/login");
   }
 

@@ -11,8 +11,8 @@ export class AppComponent {
   constructor(private restService: RestManagerService) {}
 
   ngAfterViewInit(): void {
-    if(sessionStorage.getItem("jwt")){
-      this.restService.setJwt(sessionStorage.getItem("jwt"));
+    if(localStorage.getItem("jwt")){
+      this.restService.setJwt(localStorage.getItem("jwt"));
     }
   }
 }

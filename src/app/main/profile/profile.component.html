@@ -1,91 +1,226 @@
 <div class="my-container">
   <div class="row justify-content-center">
     <div class="profile-form col-6 w-100">
-      <div class="title-container text-center mt-3 mb-3">
+      <div class="title-container text-center mt-3 mb-5">
         <p class="h1">User settings</p>
       </div>
       <form [formGroup]="formGroup">
         <div class="row justify-content-between">
-          <div class="col-4">
-            <div class="input-desblock">
-              <label>Username</label>
-              <div class="input">
-                <input
-                  placeholder="Enter a username"
-                  class="form-control"
-                  formControlName="username"
-                />
-                <button class="btn btn-success block-btn">
-                  <i class="fas fa-lock"></i>
-                </button>
+          <div class="col-4 inputs-container">
+            <div class="row">
+              <label class="text-white">Username</label>
+              <div class="row no-gutters w-100">
+                <div class="col-10">
+                  <input
+                    [ngClass]="{
+                      'is-valid': usernameControl == true,
+                      'is-invalid': usernameControl == false
+                    }"
+                    placeholder="Enter a username"
+                    class="form-control"
+                    formControlName="username"
+                  />
+                </div>
+                <div class="col-2">
+                  <button
+                    class="btn btn-outline-warning block-btn"
+                    (click)="handleInputBlock('username')"
+                  >
+                    <i
+                      *ngIf="formGroup.controls['username'].disabled"
+                      class="fas fa-lock"
+                    ></i>
+                    <i
+                      *ngIf="!formGroup.controls['username'].disabled"
+                      class="fas fa-lock-open"
+                    ></i>
+                  </button>
+                </div>
               </div>
             </div>
 
-            <div class="input-desblock mt-2">
-              <label>Username</label>
-              <div class="input">
-                <input
-                  placeholder="Enter a username"
-                  class="form-control"
-                  formControlName="password"
-                />
-                <button class="btn btn-success block-btn">
-                  <i class="fas fa-lock"></i>
-                </button>
+            <div class="row mt-3">
+              <label class="text-white">Password</label>
+              <div class="row no-gutters w-100">
+                <div class="col-10">
+                  <input
+                    [ngClass]="{
+                      'is-valid': passwordControl == true,
+                      'is-invalid': passwordControl == false
+                    }"
+                    placeholder="Enter a password"
+                    class="form-control"
+                    formControlName="password"
+                  />
+                </div>
+                <div class="col-2">
+                  <button
+                    class="btn btn-outline-warning block-btn"
+                    (click)="handleInputBlock('password')"
+                  >
+                    <i
+                      *ngIf="formGroup.controls['password'].disabled"
+                      class="fas fa-lock"
+                    ></i>
+                    <i
+                      *ngIf="!formGroup.controls['password'].disabled"
+                      class="fas fa-lock-open"
+                    ></i>
+                  </button>
+                </div>
               </div>
             </div>
 
-            <div class="input-desblock mt-2">
-              <label>Username</label>
-              <div class="input">
-                <input
-                  placeholder="Enter a username"
-                  class="form-control"
-                  formControlName="passwordRepeat"
-                />
-                <button class="btn btn-success block-btn">
-                  <i class="fas fa-lock"></i>
-                </button>
+            <div class="row mt-3">
+              <label class="text-white">Repeat your password</label>
+              <div class="row no-gutters w-100">
+                <div class="col-10">
+                  <input
+                    [ngClass]="{
+                      'is-valid': repeatPasswordControl == true,
+                      'is-invalid': repeatPasswordControl == false
+                    }"
+                    placeholder="Repeat your password"
+                    class="form-control"
+                    formControlName="repeatPassword"
+                  />
+                </div>
+                <div class="col-2">
+                  <button class="btn btn-outline-warning block-btn">
+                    <i
+                      *ngIf="formGroup.controls['password'].disabled"
+                      class="fas fa-lock"
+                    ></i>
+                    <i
+                      *ngIf="!formGroup.controls['password'].disabled"
+                      class="fas fa-lock-open"
+                    ></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <label class="text-white">Current password</label>
+              <div class="row no-gutters w-100">
+                <div class="col-10">
+                  <input
+                    [ngClass]="{
+                      'is-valid': currentPasswordControl == true,
+                      'is-invalid': currentPasswordControl == false
+                    }"
+                    placeholder="Current password"
+                    class="form-control"
+                    formControlName="currentPassword"
+                  />
+                </div>
+                <div class="col-2">
+                  <button class="btn btn-outline-warning block-btn">
+                    <i
+                      *ngIf="formGroup.controls['password'].disabled"
+                      class="fas fa-lock"
+                    ></i>
+                    <i
+                      *ngIf="!formGroup.controls['password'].disabled"
+                      class="fas fa-lock-open"
+                    ></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <label class="text-white">Height</label>
+              <div class="row no-gutters w-100">
+                <div class="col-10">
+                  <input
+                    placeholder="Enter your height (ft/m)"
+                    class="form-control"
+                    formControlName="height"
+                  />
+                </div>
+                <div class="col-2">
+                  <button
+                    class="btn btn-outline-warning block-btn"
+                    (click)="handleInputBlock('height')"
+                  >
+                    <i
+                      *ngIf="formGroup.controls['height'].disabled"
+                      class="fas fa-lock"
+                    ></i>
+                    <i
+                      *ngIf="!formGroup.controls['height'].disabled"
+                      class="fas fa-lock-open"
+                    ></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <label class="text-white">Weight</label>
+              <div class="row no-gutters w-100">
+                <div class="col-10">
+                  <input
+                    placeholder="Enter your weight (kg/lbs)"
+                    class="form-control"
+                    formControlName="weight"
+                  />
+                </div>
+                <div class="col-2">
+                  <button
+                    class="btn btn-outline-warning block-btn"
+                    (click)="handleInputBlock('weight')"
+                  >
+                    <i
+                      *ngIf="formGroup.controls['weight'].disabled"
+                      class="fas fa-lock"
+                    ></i>
+                    <i
+                      *ngIf="!formGroup.controls['weight'].disabled"
+                      class="fas fa-lock-open"
+                    ></i>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
           <div class="col-4">
             <div class="row">
-              <div
-                class="img-container"
-                (mouseenter)="showRemove = !showRemove"
-                (mouseleave)="showRemove = !showRemove"
-              >
+              <div class="img-container w-100">
                 <img
-                  class="w-100 mt-2 mr-2"
+                  class="w-100 mr-2"
                   [src]="selectedImage ? selectedImage : defaultImage"
                 />
-                <div
-                  *ngIf="showRemove"
-                  class="img-remover w-100"
-                  (click)="selectedImage = defaultImage"
-                >
-                  <i class="fas fa-ban"></i>
-                </div>
               </div>
             </div>
-            <div class="row mt-3">
-              <div class="fileupload w-100 btn btn-outline-info">
-                <input
-                  type="file"
-                  (change)="handleFileInput($event.target.files)"
-                />
-                Upload image
-                <i class="fas fa-file-upload ml-1"></i>
+            <div class="row mt-4 justify-content-center no-gutters">
+              <div class="col-10">
+                <div class="fileupload w-100 btn btn-outline-info">
+                  <input
+                    type="file"
+                    (change)="handleFileInput($event.target.files)"
+                  />
+                  Upload image
+                  <i class="fas fa-plus-circle pl-1"></i>
+                </div>
+              </div>
+              <div class="col-2" *ngIf="selectedImage">
+                <button
+                  (click)="selectedImage = null"
+                  class="btn btn-outline-danger ml-1"
+                >
+                  <i class="fas fa-skull"></i>
+                </button>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="row justify-content-center upload">
-          <button class="btn btn-outline-success mt-5">
+        <div class="row justify-content-center mt-5">
+          <button (click)="updateUser()" class="btn btn-lg btn-outline-success mt-5">
             Update profile
-            <i class="fas fa-save pl-2"></i>
+            <i class="fas fa-sync-alt pl-2"></i>
           </button>
         </div>
       </form>

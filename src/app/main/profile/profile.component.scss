@@ -1,16 +1,21 @@
 .my-container {
   .title-container {
     color: #17a2b8;
-    border: 1px solid #17a2b8;
-    border-radius: 3px;
+    border-bottom: 1px solid #17a2b8;
+    border-radius: 20px;
     .h1 {
       font-weight: 100 !important;
     }
   }
 
+  .inputs-container > .row {
+    margin: 0 auto;
+  }
+
   .input-desblock {
     label {
       color: whitesmoke;
+      float: left;
     }
     .input {
       .form-control {
@@ -42,21 +47,11 @@
   }
 
   .img-container {
-    max-height: 400px;
+    img {
+      max-height: 400px;
+    }
+    border-radius: 100%;
     cursor: pointer;
     overflow: hidden;
-  }
-
-  .img-remover {
-    position: absolute;
-    color: red;
-    top: 0;
-    opacity: 0.5;
-    height: 100%;
-    margin-bottom: -50px;
-  }
-
-  .fa-ban {
-    font-size: 3vw !important;
   }
 }

@@ -53,22 +53,28 @@ export class LoginComponent implements OnInit {
       this.restService
         .post(ApiRoutesConstants.SIGNIN, body, ApiRoutesConstants.SIGNIN_REMOTE)
         .subscribe(data => {
-          if (data.accessToken) {
-              this.restService.storeJwt(data.accessToken);
-              this.route.navigateByUrl("/index");
-          } else {
-            setTimeout(() => {
-              this._snackBar.open("Invalid credentials.", "", {
-                duration: 2000
-              });
-              this.hidden = false;
-            }, 2000);
-          }
+          this.handleLoginResponse(data);
         });
     } else {
       this._snackBar.open("Please enter username and password.", "", {
         duration: 2000
       });
+    }
+  }
+
+  private handleLoginResponse(data) {
+    if (data) {
+      localStorage.setItem("jwt", data.accessToken);
+      localStorage.setItem("user", data.user);
+      this.restService.setJwt(data.accessToken);
+      this.route.navigateByUrl("/index");
+    } else {
+      setTimeout(() => {
+        this._snackBar.open("Invalid credentials.", "", {
+          duration: 2000
+        });
+        this.hidden = false;
+      }, 2000);
     }
   }
 
