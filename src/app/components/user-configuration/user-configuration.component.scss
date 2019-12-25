@@ -3,9 +3,6 @@
     color: #17a2b8;
     border-bottom: 1px solid #17a2b8;
     border-radius: 20px;
-    .h1 {
-      font-weight: 100 !important;
-    }
   }
 
   .inputs-container > .row {
@@ -48,8 +45,9 @@
 
   .img-container {
     img {
-      max-height: 400px;
+
     }
+
     border-radius: 100%;
     cursor: pointer;
     overflow: hidden;

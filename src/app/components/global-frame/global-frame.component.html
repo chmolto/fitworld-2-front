@@ -2,6 +2,9 @@
   <div class="row topbar">
     <img src="assets/images/logoh.png" />
     <div class="botonera float-right">
+      <div class="btn-botonera" (click)="router.navigateByUrl('/index')">
+        <i class="fas fa-home"></i>
+      </div>
       <div
         class="btn-botonera"
         (click)="router.navigateByUrl('/index/settings')"
@@ -20,10 +23,11 @@
     </div>
   </div>
   <div class="row">
-    <p-sidebar [(visible)]="displaySidebar" (mouseleave)="triggerSidebar()">
-      Content
-    </p-sidebar>
-    <div class="sidebar-trigger" (mouseenter)="triggerSidebar()">
+    <app-sidebar-frame
+      [display]="displaySidebar"
+      (close)="setDisplaySidebar($event)"
+    ></app-sidebar-frame>
+    <div class="sidebar-trigger" (mouseenter)="setDisplaySidebar(true)">
       <div class="img-frame"></div>
       <img src="assets/images/load1.gif" />
       <p>FitWorld ©</p>

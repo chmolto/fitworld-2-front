@@ -1,0 +1,23 @@
+<div class="container p-4">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="h3 text-center pb-4">
+        {{ title }}
+      </h3>
+    </div>
+  </div>
+  <div class="row justify-content-around">
+    <div class="col-6">
+      <button class="btn btn-success btn-block btn-lg" (click)="response(true)">
+        Accept
+        <i class="fas fa-check pl-2"></i>
+      </button>
+    </div>
+    <div class="col-6">
+      <button class="btn btn-danger btn-block btn-lg" (click)="response(false)">
+        Cancel
+        <i class="fas fa-times pl-2"></i>
+      </button>
+    </div>
+  </div>
+</div>

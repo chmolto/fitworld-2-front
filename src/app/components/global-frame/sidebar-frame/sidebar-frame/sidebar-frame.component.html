@@ -1,0 +1,12 @@
+<p-sidebar
+  id="sidebar"
+  [visible]="displaySidebar"
+  (mouseleave)="close.emit(false)"
+>
+  <div class="container">
+    <div class="row justify-content-center">
+      <img class="user-image mt-3" [src]="userService.getUser().image" />
+      <small class="text-white pt-2"><i>{{ userService.getUser().username }}</i></small>
+    </div>
+  </div>
+</p-sidebar>

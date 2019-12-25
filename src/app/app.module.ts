@@ -18,31 +18,36 @@ import { ToastModule } from "primeng/toast";
 import { RestManagerService } from "./services/rest-manager.service";
 import { SessionGuardian } from "./services/guardians/session-guardian";
 import { SidebarModule } from "primeng/sidebar";
-import { RegisterComponent } from "./login-register/register/register.component";
-import { LoginComponent } from "./login-register/login/login.component";
-import { ActiveRoutineComponent } from "./routines/active-routine/active-routine.component";
-import { AllRoutinesComponent } from "./routines/all-routines/all-routines.component";
-import { IndexComponent } from "./index/index.component";
-import { MainComponent } from "./main/main/main.component";
-import { ProfileComponent } from "./main/profile/profile.component";
-import { SettingsComponent } from "./main/settings/settings.component";
 import { FileUploadModule } from "primeng/fileupload";
 import { MatDialogModule } from "@angular/material/dialog";
-import { DialogImgCropperComponent } from './utilities/dialog-img-cropper/dialog-img-cropper.component';
-import { ImageCropperModule } from 'ngx-image-cropper';
+import { DialogImgCropperComponent } from "./micro-components/dialog-img-cropper/dialog-img-cropper.component";
+import { ImageCropperModule } from "ngx-image-cropper";
+import { LoginComponent } from "./components/login/login.component";
+import { RegisterComponent } from "./components/register/register.component";
+import { GlobalFrameComponent } from "./components/global-frame/global-frame.component";
+import { HomeComponent } from "./components/home/home.component";
+import { UserConfigurationComponent } from "./components/user-configuration/user-configuration.component";
+import { AppConfigurationComponent } from "./components/app-configuration/app-configuration.component";
+import { ActiveRoutineComponent } from "./components/active-routine/active-routine.component";
+import { AllRoutinesComponent } from "./components/all-routines/all-routines.component";
+import { DialogConfirmationComponent } from "./micro-components/dialog-confirmation/dialog-confirmation.component";
+import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
+import { SidebarFrameComponent } from './components/global-frame/sidebar-frame/sidebar-frame/sidebar-frame.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    IndexComponent,
+    GlobalFrameComponent,
     ActiveRoutineComponent,
     AllRoutinesComponent,
-    MainComponent,
-    ProfileComponent,
-    SettingsComponent,
-    DialogImgCropperComponent
+    HomeComponent,
+    UserConfigurationComponent,
+    AppConfigurationComponent,
+    DialogImgCropperComponent,
+    DialogConfirmationComponent,
+    SidebarFrameComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -64,9 +69,10 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     FileUploadModule,
     MatDialogModule,
     ImageCropperModule,
+    MatBottomSheetModule
   ],
   providers: [MessageService, RestManagerService, SessionGuardian],
   bootstrap: [AppComponent],
-  entryComponents: [DialogImgCropperComponent]
+  entryComponents: [DialogImgCropperComponent, DialogConfirmationComponent]
 })
 export class AppModule {}

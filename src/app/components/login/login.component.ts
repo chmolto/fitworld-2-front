@@ -5,6 +5,7 @@ import { RestManagerService } from "../../services/rest-manager.service";
 import { ApiRoutesConstants } from "src/app/constants/api-routes.constants";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { catchError } from "rxjs/operators";
+import { UserSessionService } from "../../services/user-session.service";
 
 @Component({
   selector: "app-login",
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private route: Router,
     private restService: RestManagerService,
+    private userService: UserSessionService,
     private _snackBar: MatSnackBar
   ) {}
 
@@ -63,9 +65,9 @@ export class LoginComponent implements OnInit {
   }
 
   private handleLoginResponse(data) {
-    if (data) {
+    if (!data.error) {
+      this.userService.setUser(data.user);
       localStorage.setItem("jwt", data.accessToken);
-      localStorage.setItem("user", data.user);
       this.restService.setJwt(data.accessToken);
       this.route.navigateByUrl("/index");
     } else {

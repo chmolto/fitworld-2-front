@@ -1,14 +1,14 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { IndexComponent } from "./index/index.component";
 import { SessionGuardian } from "./services/guardians/session-guardian";
-import { RegisterComponent } from "./login-register/register/register.component";
-import { LoginComponent } from "./login-register/login/login.component";
-import { ActiveRoutineComponent } from "./routines/active-routine/active-routine.component";
-import { AllRoutinesComponent } from "./routines/all-routines/all-routines.component";
-import { MainComponent } from './main/main/main.component';
-import { ProfileComponent } from './main/profile/profile.component';
-import { SettingsComponent } from './main/settings/settings.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { GlobalFrameComponent } from './components/global-frame/global-frame.component';
+import { HomeComponent } from './components/home/home.component';
+import { UserConfigurationComponent } from './components/user-configuration/user-configuration.component';
+import { AppConfigurationComponent } from './components/app-configuration/app-configuration.component';
+import { ActiveRoutineComponent } from './components/active-routine/active-routine.component';
+import { AllRoutinesComponent } from './components/all-routines/all-routines.component';
 
 const routes: Routes = [
   {
@@ -21,28 +21,28 @@ const routes: Routes = [
   },
   {
     path: "index",
-    component: IndexComponent,
+    component: GlobalFrameComponent,
     canActivate: [SessionGuardian],
     children: [
       {
         path: "",
-        component: MainComponent
+        component: HomeComponent
       },
       {
         path: "profile",
-        component: ProfileComponent
+        component: UserConfigurationComponent
       },
       {
         path: "settings",
-        component: SettingsComponent
+        component: AppConfigurationComponent
       },
       {
         path: "routines/active",
-        component: SettingsComponent
+        component: ActiveRoutineComponent
       },
       {
         path: "routines/all",
-        component: SettingsComponent
+        component: AllRoutinesComponent
       }
     ]
   },
