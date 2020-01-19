@@ -51,7 +51,20 @@ html {
 
 /** Primeng Toast */
 .ui-toast-message-error {
-  background-color: #a92424e0 !important;
+  background-color: #ff5666 !important;
+  border-radius: 5px !important;
+}
+.ui-toast-message-success {
+  background-color: #9bc59d !important;
+  border-radius: 5px !important;
+}
+.ui-toast-message-warn {
+  background-color: #fcd757 !important;
+  border-radius: 5px !important;
+}
+.ui-toast-message-info {
+  background-color: #1985a1 !important;
+  border-radius: 5px !important;
 }
 .ui-toast-summary {
   color: white;
@@ -67,6 +80,10 @@ html {
 }
 
 /** Bootstrap titles */
-.h1, .h2, .h3, .h4, .h5 {
+.h1,
+.h2,
+.h3,
+.h4,
+.h5 {
   font-weight: 100 !important;
 }

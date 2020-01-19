@@ -4,6 +4,8 @@ import { Router } from "@angular/router";
 import { RestManagerService } from "../../services/rest-manager.service";
 import { ApiRoutesConstants } from "../../constants/api-routes.constants";
 import { MessageService } from "primeng/api";
+import { GoogleConstants } from "../../constants/google-constants";
+import { ToastManagerService } from "src/app/services/toast-manager.service";
 
 @Component({
   selector: "app-register",
@@ -13,7 +15,8 @@ import { MessageService } from "primeng/api";
 export class RegisterComponent implements OnInit {
   public formGroup: FormGroup;
   public hidden: boolean;
-
+  public captchaVerification: boolean;
+  public googleKey: string;
   //FORM CONTROLS
   public usernameControl: boolean;
   public password1Control: boolean;
@@ -23,8 +26,10 @@ export class RegisterComponent implements OnInit {
   constructor(
     private restService: RestManagerService,
     private route: Router,
-    private messageService: MessageService
-  ) {}
+    private toastManagerService: ToastManagerService
+  ) {
+    this.googleKey = GoogleConstants.GOOGLE_CAPTCHA_KEY;
+  }
 
   ngOnInit() {
     this.formGroup = new FormGroup({
@@ -48,6 +53,25 @@ export class RegisterComponent implements OnInit {
       ])
     });
     this.controlInputsStatus();
+  }
+
+  public checkCaptcha(request) {
+    this.restService
+      .post(ApiRoutesConstants.CAPTCHA, request)
+      .subscribe(res => {
+        if (res) {
+          if (res.success) {
+            this.toastManagerService.successToast(
+              "Captcha verified successfully"
+            );
+          }
+          this.captchaVerification = res.success;
+        }
+      });
+  }
+
+  public expireCaptcha() {
+    this.captchaVerification = false;
   }
 
   private controlInputsStatus() {
@@ -85,21 +109,24 @@ export class RegisterComponent implements OnInit {
 
   private checkForm(): boolean {
     if (!this.formGroup.valid) {
-      this.messageService.add({
-        severity: "error",
-        summary: "Invalid form",
-        detail: "* Please check all the fields",
-        life: 3000
-      });
+      this.toastManagerService.errorToast(
+        "Please check all the fields",
+        "Invalid form"
+      );
       return false;
     }
     if (!this.checkPasswordsAreEqual()) {
-      this.messageService.add({
-        severity: "error",
-        summary: "Passwords error",
-        detail: "* Passwords dont match",
-        life: 3000
-      });
+      this.toastManagerService.errorToast(
+        "Passwords dont match",
+        "Invalid form"
+      );
+      return false;
+    }
+    if (!this.captchaVerification) {
+      this.toastManagerService.errorToast(
+        "Please check the captcha",
+        "Invalid form"
+      );
       return false;
     }
     return true;

@@ -1,4 +1,3 @@
-<p-toast></p-toast>
 <div class="my-container">
   <div class="button-login text-center" (click)="redirectLogin()">
     <i class="material-icons">
@@ -79,6 +78,13 @@
               >* Both passwords must match</small
             >
           </div>
+          <div class="row justify-content-center pt-3">
+            <p-captcha
+              [siteKey]="googleKey"
+              (onResponse)="checkCaptcha($event)"
+              (onExpire)="expireCaptcha()"
+            ></p-captcha>
+          </div>
           <button
             libParticleEffectButton
             pType="triangle"
@@ -86,7 +92,7 @@
             [pParticlesAmountCoefficient]="3"
             [pHidden]="hidden"
             (click)="doRegister()"
-            class="btn btn-secondary mt-5"
+            class="btn btn-secondary mt-4"
           >
             Join our world
             <i class="fas fa-globe ml-1"></i>

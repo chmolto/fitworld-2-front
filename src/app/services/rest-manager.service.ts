@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { catchError } from "rxjs/operators";
-import { of, concat } from "rxjs";
+import { catchError, tap } from "rxjs/operators";
+import { of, concat, pipe } from "rxjs";
 import { ApiRoutesConstants } from "../constants/api-routes.constants";
+import { MessageService } from "primeng/api";
 
 @Injectable({
   providedIn: "root"
@@ -11,7 +12,10 @@ export class RestManagerService {
   private headers: HttpHeaders;
   private jwt: string;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private messageService: MessageService
+  ) {
     this.headers = new HttpHeaders();
   }
 
@@ -31,16 +35,25 @@ export class RestManagerService {
       })
       .pipe(
         catchError(err =>
-          rutaRetry ? this.retryOnlineBack(rutaRetry, body) : of(err)
+          of(err).pipe(tap(err => this.displayToastError(err.error)))
         )
       );
   }
 
-  private retryOnlineBack(rutaRetry: string, body: any) {
+  private displayToastError(error) {
+    this.messageService.add({
+      severity: "error",
+      summary: `${error.statusCode} ${error.error}`,
+      detail: "Network error",
+      life: 3000
+    });
+  }
+
+  /*   private retryOnlineBack(rutaRetry: string, body: any) {
     return this.http
       .post(rutaRetry, body, {
         headers: this.headers
       })
       .pipe(catchError(err => of(err)));
-  }
+  } */
 }

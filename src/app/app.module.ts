@@ -32,7 +32,8 @@ import { ActiveRoutineComponent } from "./components/active-routine/active-routi
 import { AllRoutinesComponent } from "./components/all-routines/all-routines.component";
 import { DialogConfirmationComponent } from "./micro-components/dialog-confirmation/dialog-confirmation.component";
 import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
-import { SidebarFrameComponent } from './components/global-frame/sidebar-frame/sidebar-frame/sidebar-frame.component';
+import { SidebarFrameComponent } from "./components/global-frame/sidebar-frame/sidebar-frame/sidebar-frame.component";
+import { CaptchaModule } from "primeng/captcha";
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { SidebarFrameComponent } from './components/global-frame/sidebar-frame/s
     AppConfigurationComponent,
     DialogImgCropperComponent,
     DialogConfirmationComponent,
-    SidebarFrameComponent,
+    SidebarFrameComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -69,7 +70,8 @@ import { SidebarFrameComponent } from './components/global-frame/sidebar-frame/s
     FileUploadModule,
     MatDialogModule,
     ImageCropperModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    CaptchaModule,
   ],
   providers: [MessageService, RestManagerService, SessionGuardian],
   bootstrap: [AppComponent],
