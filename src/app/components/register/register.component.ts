@@ -55,19 +55,8 @@ export class RegisterComponent implements OnInit {
     this.controlInputsStatus();
   }
 
-  public checkCaptcha(request) {
-    this.restService
-      .post(ApiRoutesConstants.CAPTCHA, request)
-      .subscribe(res => {
-        if (res) {
-          if (res.success) {
-            this.toastManagerService.successToast(
-              "Captcha verified successfully"
-            );
-          }
-          this.captchaVerification = res.success;
-        }
-      });
+  public checkCaptcha(data) {
+    this.captchaVerification = data.response;
   }
 
   public expireCaptcha() {
@@ -138,7 +127,8 @@ export class RegisterComponent implements OnInit {
       let body = {
         username: this.formGroup.controls["username"].value,
         password: this.formGroup.controls["password1"].value,
-        email: this.formGroup.controls["email"].value
+        email: this.formGroup.controls["email"].value,
+        captcha: this.captchaVerification
       };
       this.restService
         .post(ApiRoutesConstants.SIGNUP, body, ApiRoutesConstants.SIGNUP_REMOTE)

@@ -6,7 +6,22 @@
   <div class="container">
     <div class="row justify-content-center">
       <img class="user-image mt-3" [src]="userService.getUser().image" />
-      <small class="text-white pt-2"><i>{{ userService.getUser().username }}</i></small>
+      <small class="text-white pt-2"
+        ><i>{{ userService.getUser().username }}</i></small
+      >
+    </div>
+
+    <div class="navigation-links">
+      <mat-list>
+        <mat-list-item
+          class="pointer-cursor"
+          *ngFor="let link of navigationLinks"
+          (click)="navigate(link.link)"
+        >
+          <i [class]="link.icon" matListIcon></i>
+          <h3 class="text-white" matLine>{{ link.name }}</h3>
+        </mat-list-item>
+      </mat-list>
     </div>
   </div>
 </p-sidebar>

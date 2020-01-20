@@ -12,7 +12,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { HttpClientModule } from "@angular/common/http";
 import { ParticleEffectButtonModule } from "angular-particle-effect-button";
-import { MatSnackBarModule } from "@angular/material";
+import { MatSnackBarModule, MatIconModule } from "@angular/material";
 import { TooltipModule } from "primeng/tooltip";
 import { ToastModule } from "primeng/toast";
 import { RestManagerService } from "./services/rest-manager.service";
@@ -34,6 +34,7 @@ import { DialogConfirmationComponent } from "./micro-components/dialog-confirmat
 import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
 import { SidebarFrameComponent } from "./components/global-frame/sidebar-frame/sidebar-frame/sidebar-frame.component";
 import { CaptchaModule } from "primeng/captcha";
+import { MatListModule } from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -72,6 +73,8 @@ import { CaptchaModule } from "primeng/captcha";
     ImageCropperModule,
     MatBottomSheetModule,
     CaptchaModule,
+    MatListModule,
+    MatIconModule
   ],
   providers: [MessageService, RestManagerService, SessionGuardian],
   bootstrap: [AppComponent],
