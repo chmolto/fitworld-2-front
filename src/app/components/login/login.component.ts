@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
         password: this.formGroup.controls["password"].value
       };
       this.restService
-        .post(ApiRoutesConstants.SIGNIN, body, ApiRoutesConstants.SIGNIN_REMOTE)
+        .post(ApiRoutesConstants.SIGNIN, body)
         .subscribe(data => {
           this.handleLoginResponse(data);
         });

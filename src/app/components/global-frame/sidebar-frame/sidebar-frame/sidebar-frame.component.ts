@@ -31,7 +31,7 @@ export class SidebarFrameComponent {
       {
         name: "Routines",
         icon: "fas fa-calendar-alt text-white",
-        link: "index/routines/"
+        link: "index/routines"
       },
       {
         name: "Active routine",

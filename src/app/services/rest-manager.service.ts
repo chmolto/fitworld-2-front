@@ -28,6 +28,18 @@ export class RestManagerService {
     return this.jwt;
   }
 
+  public get(ruta: string) {
+    return this.http
+      .get(ruta, {
+        headers: this.headers
+      })
+      .pipe(
+        catchError(err =>
+          of(err).pipe(tap(err => this.displayToastError(err.error)))
+        )
+      );
+  }
+
   public post(ruta: string, body: any, rutaRetry?: string) {
     return this.http
       .post(ruta, body, {

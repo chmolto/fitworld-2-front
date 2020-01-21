@@ -102,11 +102,7 @@ export class UserConfigurationComponent {
 
           user = Utilities.parseUnsetPropertiesToNULL(user);
           this.restService
-            .post(
-              ApiRoutesConstants.UPDATE,
-              user,
-              ApiRoutesConstants.UPDATE_REMOTE
-            )
+            .post(ApiRoutesConstants.UPDATE, user)
             .subscribe(data => {
               this.handleUpdateResponse(data);
             });

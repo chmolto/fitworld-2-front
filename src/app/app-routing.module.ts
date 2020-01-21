@@ -41,7 +41,7 @@ const routes: Routes = [
         component: ActiveRoutineComponent
       },
       {
-        path: "routines/",
+        path: "routines",
         component: AllRoutinesComponent
       }
     ]

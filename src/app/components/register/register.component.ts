@@ -131,7 +131,7 @@ export class RegisterComponent implements OnInit {
         captcha: this.captchaVerification
       };
       this.restService
-        .post(ApiRoutesConstants.SIGNUP, body, ApiRoutesConstants.SIGNUP_REMOTE)
+        .post(ApiRoutesConstants.SIGNUP, body)
         .subscribe(data => {
           this.handleRegisterResponse(data);
         });
