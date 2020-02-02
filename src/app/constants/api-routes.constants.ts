@@ -11,4 +11,5 @@ export class ApiRoutesConstants {
   public static UPDATE = "http://localhost:3000/auth/update";
   public static CAPTCHA = "http://localhost:3000/auth/captcha";
   public static ROUTINES = "http://localhost:3000/routines/";
+  public static EXERCISES = "http://localhost:3000/exercises/";
 }

@@ -12,7 +12,11 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { HttpClientModule } from "@angular/common/http";
 import { ParticleEffectButtonModule } from "angular-particle-effect-button";
-import { MatSnackBarModule, MatIconModule } from "@angular/material";
+import {
+  MatSnackBarModule,
+  MatIconModule,
+  MatDividerModule
+} from "@angular/material";
 import { TooltipModule } from "primeng/tooltip";
 import { ToastModule } from "primeng/toast";
 import { RestManagerService } from "./services/rest-manager.service";
@@ -28,13 +32,15 @@ import { GlobalFrameComponent } from "./components/global-frame/global-frame.com
 import { HomeComponent } from "./components/home/home.component";
 import { UserConfigurationComponent } from "./components/user-configuration/user-configuration.component";
 import { AppConfigurationComponent } from "./components/app-configuration/app-configuration.component";
-import { ActiveRoutineComponent } from "./components/active-routine/active-routine.component";
-import { AllRoutinesComponent } from "./components/all-routines/all-routines.component";
+import { RoutineComponent } from "./components/routines/routine/routine.component";
+import { AllRoutinesComponent } from "./components/routines/all-routines/all-routines.component";
 import { DialogConfirmationComponent } from "./micro-components/dialog-confirmation/dialog-confirmation.component";
 import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
 import { SidebarFrameComponent } from "./components/global-frame/sidebar-frame/sidebar-frame/sidebar-frame.component";
 import { CaptchaModule } from "primeng/captcha";
 import { MatListModule } from "@angular/material/list";
+import { MatSelectModule } from "@angular/material/select";
+import { DragAndDropModule } from "angular-draggable-droppable";
 
 @NgModule({
   declarations: [
@@ -42,7 +48,7 @@ import { MatListModule } from "@angular/material/list";
     LoginComponent,
     RegisterComponent,
     GlobalFrameComponent,
-    ActiveRoutineComponent,
+    RoutineComponent,
     AllRoutinesComponent,
     HomeComponent,
     UserConfigurationComponent,
@@ -74,7 +80,10 @@ import { MatListModule } from "@angular/material/list";
     MatBottomSheetModule,
     CaptchaModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatDividerModule,
+    MatSelectModule,
+    DragAndDropModule,
   ],
   providers: [MessageService, RestManagerService, SessionGuardian],
   bootstrap: [AppComponent],

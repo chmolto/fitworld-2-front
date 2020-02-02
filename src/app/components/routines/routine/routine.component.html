@@ -1,0 +1,125 @@
+<div *ngIf="routine !== null" class="routine-container">
+  <div class="row justify-content-center">
+    <div class="col-10 pb-5">
+      <div class="row">
+        <div class="title-container text-center mt-3 mb-5  w-100">
+          <p
+            #routineName
+            *ngIf="routine"
+            class="h1 pointer-cursor"
+            contenteditable="true"
+            (blur)="routine.name = routineName.innerText"
+          >
+            {{ routine.name }}
+            <i class="fas fa-pencil-alt icon-medium pl-2"></i>
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <form [formGroup]="formGroup" class="w-100 exercise-selector">
+          <div class="col-12">
+            <div class="row justify-content-center pb-4">
+              <div class="col-3">
+                <mat-form-field class="example-full-width w-100">
+                  <input
+                    matInput
+                    placeholder="Search exercise"
+                    formControlName="exerciseName"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <mat-form-field class="w-100">
+                  <mat-label>Sort by muscle group</mat-label>
+                  <mat-select formControlName="muscleGroup">
+                    <mat-option
+                      *ngFor="let group of muscleGroups"
+                      [value]="group"
+                    >
+                      {{ group }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-2">
+                <button class="btn btn-danger mt-2" (click)="clearFilter()">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div
+              mwlDraggable
+              [dropData]="exercise"
+              class="exercise mr-2 mb-2"
+              *ngFor="let exercise of exercises"
+              [ngClass]="{
+                'chest-badge': exercise.muscleGroup[0] == 'Chest',
+                'back-badge': exercise.muscleGroup[0] == 'Back',
+                'legs-badge': exercise.muscleGroup[0] == 'Legs',
+                'arms-badge': exercise.muscleGroup[0] == 'Arms',
+                'shoulders-badge': exercise.muscleGroup[0] == 'Shoulders',
+                'abs-badge': exercise.muscleGroup[0] == 'Abs'
+              }"
+            >
+              {{ exercise.name }}
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="row mt-5 mb-5">
+        <div class="col-12 routine-days pb-5">
+          <div class="row justify-content-between pr-1 pl-1" cdkDropListGroup>
+            <div
+              class="day float-left"
+              *ngFor="let day of days"
+              mwlDroppable
+              (drop)="addExercise($event, day.index)"
+            >
+              <div class="text-center">
+                {{ day.name }}
+              </div>
+              <div *ngIf="routine" class="day-container h-100">
+                <div *ngFor="let routineExercise of routine.exercises">
+                  <div *ngIf="routineExercise.day == day.index">
+                    <div *ngFor="let exercise of exercises">
+                      <div
+                        *ngIf="exercise.id == routineExercise.exerciseId"
+                        class="day-container-exercise"
+                        [ngClass]="{
+                          'chest-badge': exercise.muscleGroup[0] == 'Chest',
+                          'back-badge': exercise.muscleGroup[0] == 'Back',
+                          'legs-badge': exercise.muscleGroup[0] == 'Legs',
+                          'arms-badge': exercise.muscleGroup[0] == 'Arms',
+                          'shoulders-badge': exercise.muscleGroup[0] == 'Shoulders',
+                          'abs-badge': exercise.muscleGroup[0] == 'Abs'
+                        }"
+                      >
+                        {{ exercise.name }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-5 mb-5">
+        <button class="btn btn-lg btn-outline-success" (click)="saveRoutine()">
+          Save routine <i class="fas fa-check pl-1"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 404 -->
+<div *ngIf="routine === null" class="routine-container">
+  <div class="row justify-content-center">
+    <div class="col-7 text-center pt-5">
+      <img src="assets/images/404.png" class="notfound" />
+    </div>
+  </div>
+</div>

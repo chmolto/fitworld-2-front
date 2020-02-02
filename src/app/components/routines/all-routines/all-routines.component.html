@@ -1,0 +1,26 @@
+<div class="all-routine-container">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <div class="title-container text-center mt-3 mb-5">
+        <p class="h1">Routines</p>
+      </div>
+      <div class="row mb-5">
+        <div class="col-4 mb-4" *ngFor="let routine of routines">
+          <div class="routine w-100" (click)="openRoutine(routine.id)">
+            <div class="title w-100 text-center">
+              <p class="h4 pt-2">{{ routine.name }}</p>
+              <mat-divider></mat-divider>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 mb-4">
+          <div class="routine w-100" (click)="openRoutine()">
+            <div class="title w-100 text-center">
+              <i class="fas fa-plus new-icon"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

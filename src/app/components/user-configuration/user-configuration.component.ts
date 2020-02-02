@@ -9,6 +9,7 @@ import { ApiRoutesConstants } from "src/app/constants/api-routes.constants";
 import { Utilities } from "src/app/services/utilities";
 import { UserSessionService } from "../../services/user-session.service";
 import { DialogConfirmationComponent } from "../../micro-components/dialog-confirmation/dialog-confirmation.component";
+import { ConfirmationDialogService } from "src/app/services/confirmation-dialog.service";
 
 @Component({
   selector: "app-user-configuration",
@@ -24,7 +25,7 @@ export class UserConfigurationComponent {
   constructor(
     private matDialog: MatDialog,
     private snack: MatSnackBar,
-    private dialog: MatBottomSheet,
+    private confirmationDialogService: ConfirmationDialogService,
     private restService: RestManagerService,
     public userService: UserSessionService
   ) {
@@ -84,36 +85,38 @@ export class UserConfigurationComponent {
   }
 
   public updateUser() {
-    this.dialogConfirmation().subscribe(confirmation => {
-      if (confirmation) {
-        if (
-          Utilities.validateEnabledControls(this.formGroup) &&
-          this.confirmPassword()
-        ) {
-          let user: UserModel = {
-            username: this.formGroup.controls["username"].value,
-            password: this.formGroup.controls["password"].value,
-            oldPassword: this.formGroup.controls["currentPassword"].value,
-            email: null,
-            height: this.formGroup.controls["height"].value,
-            weight: this.formGroup.controls["weight"].value,
-            image: this.selectedImage
-          };
+    this.confirmationDialogService
+      .openConfirmationDialog("Are you sure you want to update your profile?")
+      .subscribe(confirmation => {
+        if (confirmation) {
+          if (
+            Utilities.validateEnabledControls(this.formGroup) &&
+            this.confirmPassword()
+          ) {
+            let user: UserModel = {
+              username: this.formGroup.controls["username"].value,
+              password: this.formGroup.controls["password"].value,
+              oldPassword: this.formGroup.controls["currentPassword"].value,
+              email: null,
+              height: this.formGroup.controls["height"].value,
+              weight: this.formGroup.controls["weight"].value,
+              image: this.selectedImage
+            };
 
-          user = Utilities.parseUnsetPropertiesToNULL(user);
-          this.restService
-            .post(ApiRoutesConstants.UPDATE, user)
-            .subscribe(data => {
-              this.handleUpdateResponse(data);
+            user = Utilities.parseUnsetPropertiesToNULL(user);
+            this.restService
+              .post(ApiRoutesConstants.UPDATE, user)
+              .subscribe(data => {
+                this.handleUpdateResponse(data);
+              });
+          } else {
+            this.formGroup.markAllAsTouched();
+            this.snack.open("Invalid form", "OK", {
+              duration: 2000
             });
-        } else {
-          this.formGroup.markAllAsTouched();
-          this.snack.open("Invalid form", "OK", {
-            duration: 2000
-          });
+          }
         }
-      }
-    });
+      });
   }
 
   private handleUpdateResponse(data) {
@@ -126,13 +129,6 @@ export class UserConfigurationComponent {
       localStorage.setItem("user", JSON.stringify(data));
       window.location.reload();
     }
-  }
-
-  private dialogConfirmation(): EventEmitter<boolean> {
-    const dialogRef = this.dialog.open(DialogConfirmationComponent, {
-      data: "Are you sure you want to update your profile?"
-    });
-    return dialogRef.instance.confirmation;
   }
 
   private confirmPassword(): boolean {

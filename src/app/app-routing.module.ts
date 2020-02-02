@@ -7,8 +7,8 @@ import { GlobalFrameComponent } from './components/global-frame/global-frame.com
 import { HomeComponent } from './components/home/home.component';
 import { UserConfigurationComponent } from './components/user-configuration/user-configuration.component';
 import { AppConfigurationComponent } from './components/app-configuration/app-configuration.component';
-import { ActiveRoutineComponent } from './components/active-routine/active-routine.component';
-import { AllRoutinesComponent } from './components/all-routines/all-routines.component';
+import { RoutineComponent } from './components/routines/routine/routine.component';
+import { AllRoutinesComponent } from './components/routines/all-routines/all-routines.component';
 
 const routes: Routes = [
   {
@@ -37,8 +37,8 @@ const routes: Routes = [
         component: AppConfigurationComponent
       },
       {
-        path: "routines/active",
-        component: ActiveRoutineComponent
+        path: "routines/:id",
+        component: RoutineComponent
       },
       {
         path: "routines",

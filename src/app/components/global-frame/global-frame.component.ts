@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { Router } from "@angular/router";
 import { RestManagerService } from "src/app/services/rest-manager.service";
+import { UserSessionService } from "../../services/user-session.service";
 
 @Component({
   selector: "app-global-frame",
@@ -8,7 +9,11 @@ import { RestManagerService } from "src/app/services/rest-manager.service";
   styleUrls: ["./global-frame.component.scss"]
 })
 export class GlobalFrameComponent implements OnInit {
-  constructor(private restService: RestManagerService, public router: Router) {
+  constructor(
+    private restService: RestManagerService,
+    public router: Router,
+    private userService: UserSessionService
+  ) {
     this.displaySidebar = false;
   }
   public displaySidebar: boolean;
@@ -16,9 +21,7 @@ export class GlobalFrameComponent implements OnInit {
   ngOnInit() {}
 
   public logout() {
-    this.restService.setJwt(null);
-    localStorage.removeItem("jwt");
-    this.router.navigateByUrl("/login");
+    this.userService.logout();
   }
 
   public setDisplaySidebar(status: boolean) {

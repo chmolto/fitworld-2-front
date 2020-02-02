@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
     if (!data.error) {
       this.userService.setUser(data.user);
       localStorage.setItem("jwt", data.accessToken);
-      this.restService.setJwt(data.accessToken);
+      this.userService.setJwt(data.accessToken);
       this.route.navigateByUrl("/index");
     } else {
       setTimeout(() => {

@@ -1,14 +1,37 @@
 /* CLASES GLOBALS */
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("assets/fonts/_fonts.css");
+
+$fitworld-bg: #0a0a0c;
 
 html {
-  background: #0a0a0c;
+  background: $fitworld-bg;
   body {
-    background: #0a0a0c;
+    background: $fitworld-bg;
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: Roboto, "Rajdhani";
     height: 100%;
   }
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $fitworld-bg;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 /** Cursor pointer custom */
@@ -54,6 +77,13 @@ html {
   overflow: hidden;
 }
 
+/** Per a contenedors dins del frame */
+.my-container-frame {
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+}
+
 /** Primeng Toast */
 .ui-toast-message-error {
   background-color: #ff5666 !important;
@@ -91,4 +121,30 @@ html {
 .h4,
 .h5 {
   font-weight: 100 !important;
+}
+
+//ICON SIZING
+.icon-tiny {
+  font-size: 10px !important;
+}
+
+.icon-small {
+  font-size: 20px !important;
+}
+
+.icon-medium {
+  font-size: 30px !important;
+}
+
+.icon-large {
+  font-size: 40px !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }

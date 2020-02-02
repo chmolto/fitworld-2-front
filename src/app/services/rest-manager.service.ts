@@ -4,55 +4,66 @@ import { catchError, tap } from "rxjs/operators";
 import { of, concat, pipe } from "rxjs";
 import { ApiRoutesConstants } from "../constants/api-routes.constants";
 import { MessageService } from "primeng/api";
+import { UserSessionService } from "./user-session.service";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root"
 })
 export class RestManagerService {
   private headers: HttpHeaders;
-  private jwt: string;
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private userService: UserSessionService
   ) {
     this.headers = new HttpHeaders();
-  }
-
-  public setJwt(jwt: string) {
-    this.jwt = jwt;
-    this.headers = this.headers.set("Authorization", `Bearer ${jwt}`);
-  }
-
-  public getJwt() {
-    return this.jwt;
   }
 
   public get(ruta: string) {
     return this.http
       .get(ruta, {
-        headers: this.headers
+        headers: this.headers.set(
+          "Authorization",
+          `Bearer ${this.userService.getJwt()}`
+        )
       })
       .pipe(
-        catchError(err =>
-          of(err).pipe(tap(err => this.displayToastError(err.error)))
-        )
+        catchError(err => of(err).pipe(tap(err => this.handleError(err.error))))
       );
   }
 
   public post(ruta: string, body: any, rutaRetry?: string) {
     return this.http
       .post(ruta, body, {
-        headers: this.headers
+        headers: this.headers.set(
+          "Authorization",
+          `Bearer ${this.userService.getJwt()}`
+        )
       })
       .pipe(
-        catchError(err =>
-          of(err).pipe(tap(err => this.displayToastError(err.error)))
-        )
+        catchError(err => of(err).pipe(tap(err => this.handleError(err.error))))
       );
   }
 
-  private displayToastError(error) {
+  public put(ruta: string, body: any, rutaRetry?: string) {
+    return this.http
+      .put(ruta, body, {
+        headers: this.headers.set(
+          "Authorization",
+          `Bearer ${this.userService.getJwt()}`
+        )
+      })
+      .pipe(
+        catchError(err => of(err).pipe(tap(err => this.handleError(err.error))))
+      );
+  }
+
+  private handleError(error) {
+    if (error.statusCode === 401) {
+      this.userService.logout();
+    }
     this.messageService.add({
       severity: "error",
       summary: `${error.statusCode} ${error.error}`,

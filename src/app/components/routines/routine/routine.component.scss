@@ -1,0 +1,106 @@
+.routine-container {
+  .notfound {
+    opacity: 0.6;
+  }
+
+  .title-container {
+    color: #17a2b8;
+    border-bottom: 1px solid #17a2b8;
+    border-radius: 20px;
+  }
+
+  .exercise-selector {
+    width: 100%;
+    background: #33333a;
+    border-radius: 5px;
+    border: 0px solid rgb(75, 75, 75);
+    padding: 20px;
+    float: left;
+  }
+
+  .routine-days {
+    width: 100%;
+    background: #33333a;
+    border-radius: 5px;
+    border: 0px solid rgb(75, 75, 75);
+    padding: 20px;
+    float: left;
+  }
+
+  .day {
+    width: 11vw;
+    color: white;
+  }
+
+  .day-container {
+    background: #51515a;
+    min-height: 200px;
+    border-radius: 3px;
+  }
+
+  .day-container-exercise {
+    padding: 10px;
+    width: 100%;
+    min-height: 30px;
+    color: white;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  /** DRAG & SHIT */
+
+
+  /*************/
+
+  .exercise {
+    border: 0px solid #c3c3c300;
+    border-radius: 10px;
+    padding: 2px 10px;
+    float: left;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+    user-select: none; 
+  }
+
+  .chest-badge {
+    background: linear-gradient(
+      360deg,
+      rgba(8, 94, 124, 1) 0%,
+      rgba(0, 212, 255, 1) 100%
+    );
+  }
+
+  .back-badge {
+    background: linear-gradient(
+      360deg,
+      rgb(8, 124, 70) 0%,
+      rgb(0, 255, 64) 100%
+    );
+  }
+
+  .legs-badge {
+    background: linear-gradient(
+      360deg,
+      rgb(124, 8, 8) 0%,
+      rgb(255, 17, 0) 100%
+    );
+  }
+
+  .arms-badge {
+    background: linear-gradient(360deg, #7c7408 0%, #fff700 100%);
+  }
+
+  .shoulders-badge {
+    background: linear-gradient(360deg, #8e5c00 0%, #ffa600 100%);
+  }
+
+  .abs-badge {
+    background: linear-gradient(
+      360deg,
+      rgba(7, 58, 88, 1) 0%,
+      rgb(114, 8, 124) 6%,
+      rgb(247, 0, 255) 100%
+    );
+  }
+}
