@@ -9,7 +9,7 @@ import { FormGroup, FormControl } from "@angular/forms";
 import { CreateRoutineDto } from "./models/create-routine.dto";
 import { MessageService } from "primeng/api";
 import { ConfirmationDialogService } from "src/app/services/confirmation-dialog.service";
-
+import { SortablejsOptions } from "ngx-sortablejs";
 @Component({
   selector: "app-routine",
   templateUrl: "./routine.component.html",
@@ -22,7 +22,12 @@ export class RoutineComponent {
   public allExercises: Exercise[];
   public muscleGroups: string[];
   public formGroup: FormGroup;
-
+  public sortOptions: SortablejsOptions = {
+    onUpdate: (event: any) => {
+      this.updateRoutineExercises(event);
+    },
+    group: "normal-group"
+  };
   public days: Array<{ name: string; index: number }>;
   constructor(
     private activeRoute: ActivatedRoute,
@@ -113,7 +118,15 @@ export class RoutineComponent {
     });
   }
 
-  public editName() {}
+  public removeExercise(id, day) {
+    this.routine.exercises = filter(this.routine.exercises, exercise => {
+      return exercise.exerciseId != id || exercise.day != day.index;
+    });
+  }
+
+  public updateRoutineExercises(exercise){
+    console.log(exercise)
+  }
 
   public saveRoutine() {
     this.confirmationDialogService

@@ -3,6 +3,7 @@
 @import url("assets/fonts/_fonts.css");
 
 $fitworld-bg: #0a0a0c;
+$fitworld-secondary: #33333A;
 
 html {
   background: $fitworld-bg;
@@ -138,6 +139,11 @@ html {
 
 .icon-large {
   font-size: 40px !important;
+}
+
+//DIALOGO BOTOM SHEET
+.mat-bottom-sheet-container{
+  background: $fitworld-secondary !important;
 }
 
 html,

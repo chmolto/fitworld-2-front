@@ -45,10 +45,35 @@
     color: white;
     user-select: none;
     cursor: pointer;
+    &:hover {
+      .remove-exercise {
+        opacity: 100%;
+        i {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+
+  .remove-exercise {
+    border-radius: 100%;
+    background: linear-gradient(
+      360deg,
+      gray 0%,
+      rgb(70, 69, 69) 100%
+    );
+    color: white;
+    width: 25px;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+    i {
+      padding-right: 4px;
+      font-size: 0;
+      transition: 0.3s ease-in-out;
+    }
   }
 
   /** DRAG & SHIT */
-
 
   /*************/
 
@@ -60,7 +85,7 @@
     color: white;
     cursor: pointer;
     z-index: 10;
-    user-select: none; 
+    user-select: none;
   }
 
   .chest-badge {

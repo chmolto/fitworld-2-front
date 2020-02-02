@@ -80,23 +80,35 @@
               <div class="text-center">
                 {{ day.name }}
               </div>
-              <div *ngIf="routine" class="day-container h-100">
+              <div
+                *ngIf="routine"
+                class="day-container h-100"
+                [sortablejs]="routine.exercises"
+                [sortablejsOptions]="sortOptions"
+              >
                 <div *ngFor="let routineExercise of routine.exercises">
                   <div *ngIf="routineExercise.day == day.index">
                     <div *ngFor="let exercise of exercises">
                       <div
                         *ngIf="exercise.id == routineExercise.exerciseId"
-                        class="day-container-exercise"
+                        class="day-container-exercise float-left"
                         [ngClass]="{
                           'chest-badge': exercise.muscleGroup[0] == 'Chest',
                           'back-badge': exercise.muscleGroup[0] == 'Back',
                           'legs-badge': exercise.muscleGroup[0] == 'Legs',
                           'arms-badge': exercise.muscleGroup[0] == 'Arms',
-                          'shoulders-badge': exercise.muscleGroup[0] == 'Shoulders',
+                          'shoulders-badge':
+                            exercise.muscleGroup[0] == 'Shoulders',
                           'abs-badge': exercise.muscleGroup[0] == 'Abs'
                         }"
                       >
-                        {{ exercise.name }}
+                        <div class="float-left">{{ exercise.name }}</div>
+                        <div
+                          class="remove-exercise float-right text-center"
+                          (click)="removeExercise(exercise.id, day)"
+                        >
+                          <i class="fas fa-times pl-1"></i>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -107,6 +119,7 @@
         </div>
       </div>
       <div class="row justify-content-center mt-5 mb-5">
+        <p class="text-white">{{ routine | json }}</p>
         <button class="btn btn-lg btn-outline-success" (click)="saveRoutine()">
           Save routine <i class="fas fa-check pl-1"></i>
         </button>
