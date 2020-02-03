@@ -4,12 +4,23 @@ import { RestManagerService } from "../../../services/rest-manager.service";
 import { ApiRoutesConstants } from "../../../constants/api-routes.constants";
 import { Routine } from "../../../models/routine.model";
 import { Exercise, MuscleGroups } from "../../../models/exercise.model";
-import { filter, slice } from "lodash";
+import { filter, slice, find } from "lodash";
 import { FormGroup, FormControl } from "@angular/forms";
 import { CreateRoutineDto } from "./models/create-routine.dto";
 import { MessageService } from "primeng/api";
 import { ConfirmationDialogService } from "src/app/services/confirmation-dialog.service";
-import { SortablejsOptions } from "ngx-sortablejs";
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem
+} from "@angular/cdk/drag-drop";
+
+export interface RoutineDay {
+  name: string;
+  index: number;
+  exercises: Array<any>;
+}
+
 @Component({
   selector: "app-routine",
   templateUrl: "./routine.component.html",
@@ -22,13 +33,8 @@ export class RoutineComponent {
   public allExercises: Exercise[];
   public muscleGroups: string[];
   public formGroup: FormGroup;
-  public sortOptions: SortablejsOptions = {
-    onUpdate: (event: any) => {
-      this.updateRoutineExercises(event);
-    },
-    group: "normal-group"
-  };
-  public days: Array<{ name: string; index: number }>;
+
+  public days: Array<RoutineDay>;
   constructor(
     private activeRoute: ActivatedRoute,
     public restService: RestManagerService,
@@ -38,13 +44,13 @@ export class RoutineComponent {
     this.activeRoute.params.subscribe(res => this.loadRoutine(res.id));
     this.muscleGroups = ["Chest", "Back", "Legs", "Arms", "Shoulders", "Abs"];
     this.days = [
-      { name: "Monday", index: 1 },
-      { name: "Tuesday", index: 2 },
-      { name: "Wednesday", index: 3 },
-      { name: "Thursday", index: 4 },
-      { name: "Friday", index: 5 },
-      { name: "Saturday", index: 6 },
-      { name: "Sunday", index: 7 }
+      { name: "Monday", index: 1, exercises: [] },
+      { name: "Tuesday", index: 2, exercises: [] },
+      { name: "Wednesday", index: 3, exercises: [] },
+      { name: "Thursday", index: 4, exercises: [] },
+      { name: "Friday", index: 5, exercises: [] },
+      { name: "Saturday", index: 6, exercises: [] },
+      { name: "Sunday", index: 7, exercises: [] }
     ];
     this.formGroup = new FormGroup({
       exerciseName: new FormControl("", []),
@@ -80,6 +86,9 @@ export class RoutineComponent {
               exercises: routine.exerciseToRoutine,
               active: routine.active
             };
+            routine.exerciseToRoutine.forEach(routineExercise => {
+              this.setExerciseToDay(routineExercise);
+            });
           } else {
             this.routine = null;
           }
@@ -112,10 +121,22 @@ export class RoutineComponent {
   }
 
   public addExercise(exercise: any, day: number) {
-    this.routine.exercises.push({
-      exerciseId: exercise.dropData.id,
-      day
+    const routineDay: RoutineDay = find(this.days, {
+      index: day
     });
+    routineDay.exercises.push(exercise.dropData);
+  }
+
+  private setExerciseToDay(routineExercise) {
+    const day: RoutineDay = find(this.days, {
+      index: routineExercise.day
+    });
+    const exercise: Exercise = find(this.exercises, {
+      id: routineExercise.exerciseId
+    });
+    if (day && exercise) {
+      day.exercises.push(exercise);
+    }
   }
 
   public removeExercise(id, day) {
@@ -124,11 +145,44 @@ export class RoutineComponent {
     });
   }
 
-  public updateRoutineExercises(exercise){
-    console.log(exercise)
+  dragEnded($event) {
+    console.log($event);
+  }
+
+  public moveExercise(event: CdkDragDrop<string[]>, day: RoutineDay) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
+  }
+
+  private getRoutineExercises() {
+    const routineExercise = [];
+    this.days.forEach(day => {
+      if (day.exercises.length > 0) {
+        day.exercises.forEach(exercise => {
+          routineExercise.push({
+            exerciseId: exercise.id,
+            day: day.index
+          });
+        });
+      }
+    });
+    return routineExercise;
   }
 
   public saveRoutine() {
+    this.routine.exercises = this.getRoutineExercises();
     this.confirmationDialogService
       .openConfirmationDialog("Save routine?")
       .subscribe(confirmation => {

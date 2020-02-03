@@ -41,7 +41,7 @@ import { CaptchaModule } from "primeng/captcha";
 import { MatListModule } from "@angular/material/list";
 import { MatSelectModule } from "@angular/material/select";
 import { DragAndDropModule } from "angular-draggable-droppable";
-import { SortablejsModule } from "ngx-sortablejs";
+import { DragDropModule } from "@angular/cdk/drag-drop";
 
 @NgModule({
   declarations: [
@@ -85,7 +85,7 @@ import { SortablejsModule } from "ngx-sortablejs";
     MatDividerModule,
     MatSelectModule,
     DragAndDropModule,
-    SortablejsModule.forRoot({ animation: 150 }),
+    DragDropModule
   ],
   providers: [MessageService, RestManagerService, SessionGuardian],
   bootstrap: [AppComponent],

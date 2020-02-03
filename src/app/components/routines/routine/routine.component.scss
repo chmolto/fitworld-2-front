@@ -43,6 +43,7 @@
     width: 100%;
     min-height: 30px;
     color: white;
+    background: red;
     user-select: none;
     cursor: pointer;
     &:hover {
@@ -57,11 +58,7 @@
 
   .remove-exercise {
     border-radius: 100%;
-    background: linear-gradient(
-      360deg,
-      gray 0%,
-      rgb(70, 69, 69) 100%
-    );
+    background: linear-gradient(360deg, gray 0%, rgb(70, 69, 69) 100%);
     color: white;
     width: 25px;
     opacity: 0;
@@ -75,6 +72,29 @@
 
   /** DRAG & SHIT */
 
+  .cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+      0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+
+  .cdk-drag-placeholder {
+    opacity: 0;
+  }
+
+  .cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .exercise:last-child {
+    border: none;
+  }
+
+  .day-container.cdk-drop-list-dragging .exercise:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
   /*************/
 
   .exercise {
@@ -86,6 +106,7 @@
     cursor: pointer;
     z-index: 10;
     user-select: none;
+    text-shadow: 0px 2px 6px black;
   }
 
   .chest-badge {
@@ -123,8 +144,7 @@
   .abs-badge {
     background: linear-gradient(
       360deg,
-      rgba(7, 58, 88, 1) 0%,
-      rgb(114, 8, 124) 6%,
+      rgb(114, 8, 124) 0%,
       rgb(247, 0, 255) 100%
     );
   }
