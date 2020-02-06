@@ -3,7 +3,7 @@
 @import url("assets/fonts/_fonts.css");
 
 $fitworld-bg: #0a0a0c;
-$fitworld-secondary: #33333A;
+$fitworld-secondary: #33333a;
 
 html {
   background: $fitworld-bg;
@@ -38,6 +38,11 @@ html {
 /** Cursor pointer custom */
 .pointer-cursor {
   cursor: pointer;
+}
+
+/** Unselectable text */
+.user-select-none {
+  user-select: none;
 }
 
 /** Row sense padding */
@@ -142,15 +147,40 @@ html {
 }
 
 //DIALOGO BOTOM SHEET
-.mat-bottom-sheet-container{
+.mat-bottom-sheet-container {
   background: $fitworld-secondary !important;
 }
 
-html,
-body {
-  height: 100%;
+//BADGES COLORS
+
+.chest-badge {
+  background: linear-gradient(
+    360deg,
+    rgba(8, 94, 124, 1) 0%,
+    rgba(0, 212, 255, 1) 100%
+  );
 }
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+.back-badge {
+  background: linear-gradient(360deg, rgb(8, 124, 70) 0%, rgb(0, 255, 64) 100%);
+}
+
+.legs-badge {
+  background: linear-gradient(360deg, rgb(124, 8, 8) 0%, rgb(255, 17, 0) 100%);
+}
+
+.arms-badge {
+  background: linear-gradient(360deg, #7c7408 0%, #fff700 100%);
+}
+
+.shoulders-badge {
+  background: linear-gradient(360deg, #8e5c00 0%, #ffa600 100%);
+}
+
+.abs-badge {
+  background: linear-gradient(
+    360deg,
+    rgb(114, 8, 124) 0%,
+    rgb(247, 0, 255) 100%
+  );
 }

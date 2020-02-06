@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { RestManagerService } from "../../../services/rest-manager.service";
 import { ApiRoutesConstants } from "../../../constants/api-routes.constants";
@@ -24,7 +24,8 @@ export interface RoutineDay {
 @Component({
   selector: "app-routine",
   templateUrl: "./routine.component.html",
-  styleUrls: ["./routine.component.scss"]
+  styleUrls: ["./routine.component.scss"],
+  encapsulation: ViewEncapsulation.None
 })
 export class RoutineComponent {
   public routine: CreateRoutineDto;
@@ -33,8 +34,8 @@ export class RoutineComponent {
   public allExercises: Exercise[];
   public muscleGroups: string[];
   public formGroup: FormGroup;
-
   public days: Array<RoutineDay>;
+
   constructor(
     private activeRoute: ActivatedRoute,
     public restService: RestManagerService,
@@ -140,13 +141,13 @@ export class RoutineComponent {
   }
 
   public removeExercise(id, day) {
-    this.routine.exercises = filter(this.routine.exercises, exercise => {
-      return exercise.exerciseId != id || exercise.day != day.index;
-    });
-  }
-
-  dragEnded($event) {
-    console.log($event);
+    const dayIndex = day.index - 1;
+    this.days[dayIndex].exercises = filter(
+      this.days[dayIndex].exercises,
+      exercise => {
+        return exercise.id != id;
+      }
+    );
   }
 
   public moveExercise(event: CdkDragDrop<string[]>, day: RoutineDay) {

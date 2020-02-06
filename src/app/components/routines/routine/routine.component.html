@@ -75,21 +75,19 @@
             class="row justify-content-between pr-1 pl-1"
             cdkDropListGroup
           >
-            <div
-              class="day float-left"
-              *ngFor="let day of days"
-              mwlDroppable
-              cdkDropList
-              (drop)="addExercise($event, day.index)"
-              [cdkDropListData]="day.exercises"
-              (cdkDropListDropped)="moveExercise($event, day)"
-            >
-              <div class="text-center">
+            <div class="day float-left" *ngFor="let day of days">
+              <div class="text-center user-select-none">
                 {{ day.name }}
               </div>
-              <div class="day-container h-100">
+              <div
+                class="day-container h-100"
+                mwlDroppable
+                cdkDropList
+                (drop)="addExercise($event, day.index)"
+                [cdkDropListData]="day.exercises"
+                (cdkDropListDropped)="moveExercise($event, day)"
+              >
                 <div
-                  (cdkDragEnded)="dragEnded($event)"
                   *ngFor="let exercise of day.exercises"
                   cdkDrag
                   class="day-container-exercise float-left"
