@@ -88,8 +88,8 @@
                 (cdkDropListDropped)="moveExercise($event, day)"
               >
                 <div
-                  *ngFor="let exercise of day.exercises"
                   cdkDrag
+                  *ngFor="let exercise of day.exercises; index as i"
                   class="day-container-exercise float-left"
                   [ngClass]="{
                     'chest-badge': exercise.muscleGroup[0] == 'Chest',
@@ -103,7 +103,7 @@
                   <div class="float-left">{{ exercise.name }}</div>
                   <div
                     class="remove-exercise float-right text-center"
-                    (click)="removeExercise(exercise.id, day)"
+                    (click)="removeExercise(day, i)"
                   >
                     <i class="fas fa-times pl-1"></i>
                   </div>

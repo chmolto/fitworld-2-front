@@ -38,11 +38,13 @@ const routes: Routes = [
       },
       {
         path: "routines/:id",
-        component: RoutineComponent
+        component: RoutineComponent,
+        data: {animation: 'Routine'}
       },
       {
         path: "routines",
-        component: AllRoutinesComponent
+        component: AllRoutinesComponent,
+        data: {animation: 'RoutineList'}
       }
     ]
   },

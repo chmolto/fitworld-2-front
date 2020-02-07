@@ -32,8 +32,11 @@
       <img src="assets/images/load1.gif" />
       <p>FitWorld ©</p>
     </div>
-    <div class="w-100 my-container-frame">
-      <router-outlet></router-outlet>
+    <div
+      class="w-100 my-container-frame"
+      [@routeAnimations]="prepareRoute(outlet)"
+    >
+      <router-outlet #outlet="outlet"></router-outlet>
     </div>
   </div>
 </div>

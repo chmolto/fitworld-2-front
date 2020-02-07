@@ -14,6 +14,7 @@ import {
   moveItemInArray,
   transferArrayItem
 } from "@angular/cdk/drag-drop";
+import { trigger, transition, style, animate } from "@angular/animations";
 
 export interface RoutineDay {
   name: string;
@@ -24,8 +25,7 @@ export interface RoutineDay {
 @Component({
   selector: "app-routine",
   templateUrl: "./routine.component.html",
-  styleUrls: ["./routine.component.scss"],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ["./routine.component.scss"]
 })
 export class RoutineComponent {
   public routine: CreateRoutineDto;
@@ -140,14 +140,8 @@ export class RoutineComponent {
     }
   }
 
-  public removeExercise(id, day) {
-    const dayIndex = day.index - 1;
-    this.days[dayIndex].exercises = filter(
-      this.days[dayIndex].exercises,
-      exercise => {
-        return exercise.id != id;
-      }
-    );
+  public removeExercise(day, i) {
+    this.days[day.index - 1].exercises.splice(i, 1);
   }
 
   public moveExercise(event: CdkDragDrop<string[]>, day: RoutineDay) {
