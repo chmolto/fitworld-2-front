@@ -1,26 +1,12 @@
+@import "../../../../styles.scss";
 .routine-container {
   .notfound {
     opacity: 0.6;
   }
 
-  .title-container {
-    color: #17a2b8;
-    border-bottom: 1px solid #17a2b8;
-    border-radius: 20px;
-  }
-
-  .exercise-selector {
+  .main-divs {
     width: 100%;
-    background: #33333a;
-    border-radius: 5px;
-    border: 0px solid rgb(75, 75, 75);
-    padding: 20px;
-    float: left;
-  }
-
-  .routine-days {
-    width: 100%;
-    background: #33333a;
+    background: $fit-secondary;
     border-radius: 5px;
     border: 0px solid rgb(75, 75, 75);
     padding: 20px;
@@ -34,7 +20,7 @@
 
   .day-container {
     background: #51515a;
-    min-height: 200px;
+    min-height: 270px;
     border-radius: 3px;
     overflow: hidden;
   }
@@ -52,6 +38,35 @@
         i {
           font-size: 0.9rem;
         }
+      }
+    }
+  }
+
+  .select-day {
+    width: 100%;
+    background: rgb(171, 171, 171);
+    transition: 0.5s ease-in-out;
+    &:hover {
+      background: rgb(114, 114, 114);
+    }
+    .mat-radio-checked {
+      background: linear-gradient(360deg, $fit-dark-green 0%, $fit-green 100%);
+    }
+    mat-radio-button {
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      .mat-radio-label {
+        margin: 0;
+        padding: 6px 0px;
+        text-align: center !important;
+        .mat-radio-label-content {
+          width: 100% !important;
+          user-select: none;
+        }
+      }
+      .mat-radio-container {
+        display: none !important;
       }
     }
   }
@@ -80,5 +95,79 @@
     z-index: 10;
     user-select: none;
     text-shadow: 0px 2px 6px black;
+  }
+
+  .muscle-color {
+    width: 15px;
+    height: 15px;
+    margin: 4px 10px 0 20px;
+    padding: 0 20px;
+    border-radius: 3px;
+  }
+
+  .muscle-info {
+    border: 0.5px solid rgba(255, 255, 255, 0.31);
+    border-radius: 5px;
+    padding: 10px 0;
+    margin-top: -7px;
+    margin-bottom: 25px;
+  }
+
+  .button-toolbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #0a0a0cde;
+    .btn {
+      padding: 0.1rem 0.75rem !important;
+    }
+  }
+
+  .details-chest {
+    background: $fit-blue;
+    .editable-field {
+      background: $fit-dark-blue;
+    }
+  }
+
+  .details-back {
+    background: $fit-green;
+    .editable-field {
+      background: $fit-dark-green;
+    }
+  }
+
+  .details-legs {
+    background: $fit-red;
+    .editable-field {
+      background: $fit-dark-red;
+    }
+  }
+
+  .details-arms {
+    background: $fit-yellow;
+    .editable-field {
+      background: $fit-dark-yellow;
+    }
+  }
+
+  .details-shoulders {
+    background: $fit-orange;
+    .editable-field {
+      background: $fit-dark-orange;
+    }
+  }
+
+  .details-abs {
+    background: $fit-pink;
+    .editable-field {
+      background: $fit-dark-pink;
+    }
+  }
+
+  .exercise-detail {
+    border-top: 1px solid #33333a;
   }
 }

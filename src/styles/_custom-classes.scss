@@ -1,0 +1,64 @@
+/** Cursor pointer custom */
+.pointer-cursor {
+  cursor: pointer;
+}
+
+/** Unselectable text */
+.user-select-none {
+  user-select: none;
+}
+
+/** Row sense padding */
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+.row.no-gutters > [class^="col-"],
+.row.no-gutters > [class*=" col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+/** Substitut de container de bootstrap */
+.my-container {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/** Per a contenedors dins del frame */
+.my-container-frame {
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+}
+
+//ICON SIZING
+.icon-tiny {
+  font-size: 10px !important;
+}
+
+.icon-small {
+  font-size: 20px !important;
+}
+
+.icon-medium {
+  font-size: 30px !important;
+}
+
+.icon-large {
+  font-size: 40px !important;
+}
+
+/** CONTENEDOR TITULOS */
+.title-container {
+  color: $fit-text;
+  border-bottom: 1px solid $fit-text;
+  border-radius: 0px 0px 5px 5px;
+  background: linear-gradient(
+    0deg,
+    rgba(171, 171, 171, 0.2) 0%,
+    rgba(171, 171, 171, 0.1) 30%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}

@@ -1,59 +1,25 @@
-/* CLASES GLOBALS */
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-@import url("assets/fonts/_fonts.css");
-
-$fitworld-bg: #0a0a0c;
-$fitworld-secondary: #33333a;
+@import "styles/muscle-colors";
+@import "styles/drag-drop";
+@import "styles/custom-classes";
+@import "styles/scrollbars";
+@import "styles/toasts";
+//@import "assets/fonts/fonts";
 
 html {
-  background: $fitworld-bg;
+  background: $fit-bg;
   body {
-    background: $fitworld-bg;
+    background: $fit-bg;
     margin: 0;
     font-family: Roboto, "Rajdhani";
     height: 100%;
   }
 }
 
-// Custom scrollbar
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: $fitworld-bg;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-/** Cursor pointer custom */
-.pointer-cursor {
-  cursor: pointer;
-}
-
-/** Unselectable text */
-.user-select-none {
-  user-select: none;
-}
-
-/** Row sense padding */
-.row.no-gutters {
-  margin-right: 0;
-  margin-left: 0;
-}
-.row.no-gutters > [class^="col-"],
-.row.no-gutters > [class*=" col-"] {
-  padding-right: 0;
-  padding-left: 0;
+[contenteditable="true"]:active,
+[contenteditable="true"]:focus {
+  border: none;
+  outline: none;
 }
 
 /** Bootstrap Input */
@@ -76,44 +42,6 @@ html {
   vertical-align: middle !important;
 }
 
-/** Substitut de container de bootstrap */
-.my-container {
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-}
-
-/** Per a contenedors dins del frame */
-.my-container-frame {
-  height: 100vh;
-  width: 100%;
-  overflow-y: auto;
-}
-
-/** Primeng Toast */
-.ui-toast-message-error {
-  background-color: #ff5666 !important;
-  border-radius: 5px !important;
-}
-.ui-toast-message-success {
-  background-color: #9bc59d !important;
-  border-radius: 5px !important;
-}
-.ui-toast-message-warn {
-  background-color: #fcd757 !important;
-  border-radius: 5px !important;
-}
-.ui-toast-message-info {
-  background-color: #1985a1 !important;
-  border-radius: 5px !important;
-}
-.ui-toast-summary {
-  color: white;
-}
-.ui-toast-detail {
-  color: white;
-}
-
 /** Bootstrap input disabled */
 .form-control:disabled {
   background-color: #afb1b3 !important;
@@ -129,88 +57,7 @@ html {
   font-weight: 100 !important;
 }
 
-//ICON SIZING
-.icon-tiny {
-  font-size: 10px !important;
-}
-
-.icon-small {
-  font-size: 20px !important;
-}
-
-.icon-medium {
-  font-size: 30px !important;
-}
-
-.icon-large {
-  font-size: 40px !important;
-}
-
 //DIALOGO BOTOM SHEET
 .mat-bottom-sheet-container {
-  background: $fitworld-secondary !important;
+  background: $fit-secondary !important;
 }
-
-//BADGES COLORS
-
-.chest-badge {
-  background: linear-gradient(
-    360deg,
-    rgba(8, 94, 124, 1) 0%,
-    rgba(0, 212, 255, 1) 100%
-  );
-}
-
-.back-badge {
-  background: linear-gradient(360deg, rgb(8, 124, 70) 0%, rgb(0, 255, 64) 100%);
-}
-
-.legs-badge {
-  background: linear-gradient(360deg, rgb(124, 8, 8) 0%, rgb(255, 17, 0) 100%);
-}
-
-.arms-badge {
-  background: linear-gradient(360deg, #7c7408 0%, #fff700 100%);
-}
-
-.shoulders-badge {
-  background: linear-gradient(360deg, #8e5c00 0%, #ffa600 100%);
-}
-
-.abs-badge {
-  background: linear-gradient(
-    360deg,
-    rgb(114, 8, 124) 0%,
-    rgb(247, 0, 255) 100%
-  );
-}
-
-/** DRAG AND DROP */
-
-.cdk-drag-preview {
-  box-sizing: border-box;
-  border-radius: 4px;
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
-  color: white;
-  user-select: none;
-  text-shadow: 0px 2px 6px black;
-  padding: 10px;
-}
-
-.cdk-drag-placeholder {
-  opacity: 0;
-}
-
-.cdk-drag-animating {
-  transition: transform 250ms cubic-bezier(0, 0.5, 1, 2);
-}
-
-.exercise:last-child {
-  border: none;
-}
-
-.day-container.cdk-drop-list-dragging .exercise:not(.cdk-drag-placeholder) {
-  transition: transform 250ms cubic-bezier(0, 0.5, 1, 2);
-}
-

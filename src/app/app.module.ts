@@ -42,7 +42,9 @@ import { MatListModule } from "@angular/material/list";
 import { MatSelectModule } from "@angular/material/select";
 import { DragAndDropModule } from "angular-draggable-droppable";
 import { DragDropModule } from "@angular/cdk/drag-drop";
-import { RouterModule } from '@angular/router';
+import { RouterModule } from "@angular/router";
+import { MatRadioModule } from "@angular/material/radio";
+import {MatRippleModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -87,7 +89,9 @@ import { RouterModule } from '@angular/router';
     MatSelectModule,
     DragAndDropModule,
     DragDropModule,
-    RouterModule
+    RouterModule,
+    MatRadioModule,
+    MatRippleModule
   ],
   providers: [MessageService, RestManagerService, SessionGuardian],
   bootstrap: [AppComponent],

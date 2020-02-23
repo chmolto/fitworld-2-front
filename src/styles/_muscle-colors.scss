@@ -1,0 +1,27 @@
+@import "fit-colors";
+
+//MUSCLE COLORS
+
+.chest-badge {
+  background: linear-gradient(360deg, $fit-dark-blue 0%, $fit-blue 100%);
+}
+
+.back-badge {
+  background: linear-gradient(360deg, $fit-dark-green 0%, $fit-green 100%);
+}
+
+.legs-badge {
+  background: linear-gradient(360deg, $fit-dark-red 0%, $fit-red 100%);
+}
+
+.arms-badge {
+  background: linear-gradient(360deg, $fit-dark-yellow 0%, $fit-yellow 100%);
+}
+
+.shoulders-badge {
+  background: linear-gradient(360deg, $fit-dark-orange 0%, $fit-orange 100%);
+}
+
+.abs-badge {
+  background: linear-gradient(360deg, $fit-dark-pink 0%, $fit-pink 100%);
+}

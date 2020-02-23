@@ -1,6 +1,6 @@
 <div *ngIf="routine !== null" class="routine-container">
   <div class="row justify-content-center">
-    <div class="col-10 pb-5">
+    <div class="col-10 pb-5 mb-5">
       <div class="row">
         <div class="title-container text-center mt-3 mb-5  w-100">
           <p
@@ -17,7 +17,7 @@
       </div>
 
       <div class="row">
-        <form [formGroup]="formGroup" class="w-100 exercise-selector">
+        <form [formGroup]="formGroup" class="w-100 main-divs">
           <div class="col-12">
             <div class="row justify-content-center pb-4">
               <div class="col-3">
@@ -48,6 +48,29 @@
                 </button>
               </div>
             </div>
+            <div class="row justify-content-center">
+              <div class="muscle-info col-6">
+                <div class="row justify-content-center">
+                  <div
+                    *ngFor="let muscle of muscleGroups"
+                    class="float-left text-white"
+                  >
+                    <div
+                      class="muscle-color float-left"
+                      [ngClass]="{
+                        'chest-badge': muscle == 'Chest',
+                        'back-badge': muscle == 'Back',
+                        'legs-badge': muscle == 'Legs',
+                        'arms-badge': muscle == 'Arms',
+                        'shoulders-badge': muscle == 'Shoulders',
+                        'abs-badge': muscle == 'Abs'
+                      }"
+                    ></div>
+                    {{ muscle }}
+                  </div>
+                </div>
+              </div>
+            </div>
             <div
               mwlDraggable
               [dropData]="exercise"
@@ -69,7 +92,7 @@
       </div>
 
       <div class="row mt-5 mb-5">
-        <div class="col-12 routine-days pb-5">
+        <div class="col-12 main-divs pb-3">
           <div
             *ngIf="routine"
             class="row justify-content-between pr-1 pl-1"
@@ -80,17 +103,17 @@
                 {{ day.name }}
               </div>
               <div
-                class="day-container h-100"
+                class="day-container pb-3"
                 mwlDroppable
                 cdkDropList
                 (drop)="addExercise($event, day.index)"
                 [cdkDropListData]="day.exercises"
-                (cdkDropListDropped)="moveExercise($event, day)"
+                (cdkDropListDropped)="moveExercise($event)"
               >
                 <div
                   cdkDrag
                   *ngFor="let exercise of day.exercises; index as i"
-                  class="day-container-exercise float-left"
+                  class="day-container-exercise float-left mat-elevation-z4"
                   [ngClass]="{
                     'chest-badge': exercise.muscleGroup[0] == 'Chest',
                     'back-badge': exercise.muscleGroup[0] == 'Back',
@@ -109,15 +132,100 @@
                   </div>
                 </div>
               </div>
+              <div class="select-day mat-elevation-z4">
+                <mat-radio-button #radioDay (click)="selectDay(day)"
+                  >Select</mat-radio-button
+                >
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="row justify-content-center mt-5 mb-5">
-        <button class="btn btn-lg btn-outline-success" (click)="saveRoutine()">
-          Save routine <i class="fas fa-check pl-1"></i>
-        </button>
+
+      <div *ngIf="daySelected" class="row mt-5 mb-5">
+        <div class="col-12 main-divs">
+          <div class="row justify-content-between pb-3">
+            <div class="col-3 text-white text-center">
+              Exercise
+            </div>
+            <div class="col-3 text-white text-center">
+              Sets
+            </div>
+            <div class="col-3 text-white text-center">
+              Reps
+            </div>
+            <div class="col-3 text-white text-center">
+              Estimated RM%
+            </div>
+          </div>
+          <div
+            cdkDropList
+            (cdkDropListDropped)="moveExercise($event)"
+            [cdkDropListData]="daySelected.exercises"
+          >
+            <div
+              *ngFor="let exercise of daySelected.exercises"
+              class="exercise-detail row justify-content-between pb-2 pt-2"
+              [ngClass]="{
+                'details-chest': exercise.muscleGroup[0] == 'Chest',
+                'details-back': exercise.muscleGroup[0] == 'Back',
+                'details-legs': exercise.muscleGroup[0] == 'Legs',
+                'details-arms': exercise.muscleGroup[0] == 'Arms',
+                'details-shoulders': exercise.muscleGroup[0] == 'Shoulders',
+                'details-abs': exercise.muscleGroup[0] == 'Abs'
+              }"
+              cdkDrag
+            >
+              <div class="col-3 text-white">
+                {{ exercise.name }}
+              </div>
+
+              <div class="col-3 pl-1 pr-1">
+                <div
+                  contenteditable="true"
+                  class="text-white text-right editable-field pr-2"
+                >
+                  5
+                </div>
+              </div>
+
+              <div class="col-3 pl-1 pr-1">
+                <div
+                  contenteditable="true"
+                  class="text-white text-right editable-field pr-2"
+                >
+                  5
+                </div>
+              </div>
+
+              <div class="col-3 pl-1 pr-1">
+                <div
+                  contenteditable="true"
+                  class="text-white text-right editable-field pr-2"
+                >
+                  65%
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+  </div>
+  <div class="button-toolbar row justify-content-center">
+    <div class="pb-1 pt-1">
+      <button
+        class="btn btn-outline-danger"
+        (click)="router.navigateByUrl('index/routines')"
+      >
+        Go back <i class="fas fa-chevron-left pl-1"></i>
+      </button>
+      <button class="btn btn-outline-success ml-3" (click)="saveRoutine()">
+        Save routine <i class="fas fa-check pl-1"></i>
+      </button>
+      <button class="btn btn-outline-info ml-3">
+        See log <i class="fas fa-search pl-1"></i>
+      </button>
     </div>
   </div>
 </div>
