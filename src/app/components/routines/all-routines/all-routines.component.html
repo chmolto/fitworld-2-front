@@ -6,7 +6,10 @@
       </div>
       <div class="row mb-5">
         <div class="col-4 mb-4" *ngFor="let routine of routines">
-          <div class="routine w-100" (click)="openRoutine(routine.id)">
+          <div
+            class="routine w-100 mat-elevation-z4"
+            (click)="openRoutine(routine.id)"
+          >
             <div class="title w-100 text-center">
               <p class="h4 pt-2">{{ routine.name }}</p>
               <mat-divider></mat-divider>
@@ -14,7 +17,7 @@
           </div>
         </div>
         <div class="col-4 mb-4">
-          <div class="routine w-100" (click)="openRoutine()">
+          <div class="routine w-100 mat-elevation-z4" (click)="openRoutine()">
             <div class="title w-100 text-center">
               <i class="fas fa-plus new-icon"></i>
             </div>

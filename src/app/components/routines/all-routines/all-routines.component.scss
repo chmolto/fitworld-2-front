@@ -11,10 +11,10 @@
     height: 300px;
     border: 1px solid rgb(25, 24, 27);
     border-radius: 5px;
-    background: rgba(23, 23, 27, 0.829);
+    background: #272727;
     cursor: pointer;
     &:hover {
-      background: rgba(38, 38, 44, 0.822);
+      background: #303030;
       .new-icon {
         opacity: 1;
         transition: 0.5s;

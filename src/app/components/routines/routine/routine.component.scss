@@ -19,7 +19,7 @@
   }
 
   .day-container {
-    background: #51515a;
+    background: #484848;
     min-height: 270px;
     border-radius: 3px;
     overflow: hidden;
@@ -44,10 +44,10 @@
 
   .select-day {
     width: 100%;
-    background: rgb(171, 171, 171);
+    background: #666;
     transition: 0.5s ease-in-out;
     &:hover {
-      background: rgb(114, 114, 114);
+      background: #777;
     }
     .mat-radio-checked {
       background: linear-gradient(360deg, $fit-dark-green 0%, $fit-green 100%);
@@ -119,55 +119,20 @@
     left: 0;
     right: 0;
     width: 100%;
-    background: #0a0a0cde;
+    background: #1d1d1d;
     .btn {
       padding: 0.1rem 0.75rem !important;
     }
   }
 
-  .details-chest {
-    background: $fit-blue;
-    .editable-field {
-      background: $fit-dark-blue;
-    }
-  }
-
-  .details-back {
-    background: $fit-green;
-    .editable-field {
-      background: $fit-dark-green;
-    }
-  }
-
-  .details-legs {
-    background: $fit-red;
-    .editable-field {
-      background: $fit-dark-red;
-    }
-  }
-
-  .details-arms {
-    background: $fit-yellow;
-    .editable-field {
-      background: $fit-dark-yellow;
-    }
-  }
-
-  .details-shoulders {
-    background: $fit-orange;
-    .editable-field {
-      background: $fit-dark-orange;
-    }
-  }
-
-  .details-abs {
-    background: $fit-pink;
-    .editable-field {
-      background: $fit-dark-pink;
-    }
+  .clear-filter {
+    padding: 0px 7px !important;
   }
 
   .exercise-detail {
-    border-top: 1px solid #33333a;
+    border-top: 1px solid $fit-text;
+    &:first-child {
+      border-top: none;
+    }
   }
 }

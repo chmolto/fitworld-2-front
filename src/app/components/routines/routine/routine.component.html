@@ -1,23 +1,20 @@
 <div *ngIf="routine !== null" class="routine-container">
   <div class="row justify-content-center">
     <div class="col-10 pb-5 mb-5">
-      <div class="row">
-        <div class="title-container text-center mt-3 mb-5  w-100">
-          <p
-            #routineName
-            *ngIf="routine"
-            class="h1 pointer-cursor"
-            contenteditable="true"
-            (blur)="routine.name = routineName.innerText"
-          >
-            {{ routine.name }}
-            <i class="fas fa-pencil-alt icon-medium pl-2"></i>
-          </p>
-        </div>
-      </div>
-
-      <div class="row">
-        <form [formGroup]="formGroup" class="w-100 main-divs">
+      <div class="row mt-4">
+        <form [formGroup]="formGroup" class="w-100 main-divs mat-elevation-z4">
+          <div class="text-center mt-2 mb-3  w-100 row justify-content-center">
+            <p
+              #routineName
+              *ngIf="routine"
+              class="pointer-cursor text-white h3"
+              contenteditable="true"
+              (blur)="routine.name = routineName.innerText"
+            >
+              {{ routine.name }}
+              <i class="fas fa-pencil-alt icon-small pl-2"></i>
+            </p>
+          </div>
           <div class="col-12">
             <div class="row justify-content-center pb-4">
               <div class="col-3">
@@ -42,8 +39,11 @@
                   </mat-select>
                 </mat-form-field>
               </div>
-              <div class="col-2">
-                <button class="btn btn-danger mt-2" (click)="clearFilter()">
+              <div class="col-1 pt-3">
+                <button
+                  class="btn btn-danger mt-2 clear-filter"
+                  (click)="clearFilter()"
+                >
                   <i class="fas fa-times"></i>
                 </button>
               </div>
@@ -92,7 +92,7 @@
       </div>
 
       <div class="row mt-5 mb-5">
-        <div class="col-12 main-divs pb-3">
+        <div class="col-12 main-divs pb-3 mat-elevation-z4">
           <div
             *ngIf="routine"
             class="row justify-content-between pr-1 pl-1"
@@ -166,15 +166,6 @@
             <div
               *ngFor="let exercise of daySelected.exercises"
               class="exercise-detail row justify-content-between pb-2 pt-2"
-              [ngClass]="{
-                'details-chest': exercise.muscleGroup[0] == 'Chest',
-                'details-back': exercise.muscleGroup[0] == 'Back',
-                'details-legs': exercise.muscleGroup[0] == 'Legs',
-                'details-arms': exercise.muscleGroup[0] == 'Arms',
-                'details-shoulders': exercise.muscleGroup[0] == 'Shoulders',
-                'details-abs': exercise.muscleGroup[0] == 'Abs'
-              }"
-              cdkDrag
             >
               <div class="col-3 text-white">
                 {{ exercise.name }}
@@ -212,7 +203,7 @@
       </div>
     </div>
   </div>
-  <div class="button-toolbar row justify-content-center">
+  <div class="button-toolbar row justify-content-center mat-elevation-z4">
     <div class="pb-1 pt-1">
       <button
         class="btn btn-outline-danger"

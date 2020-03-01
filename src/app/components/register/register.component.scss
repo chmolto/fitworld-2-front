@@ -1,10 +1,10 @@
+@import "../../../styles.scss";
 .my-container {
   .card {
     width: 400px;
     top: 10rem;
     padding-top: 2rem;
-    background-color: #454955;
-    border: 3px solid rgba(0, 0, 0, 0.36);
+    background-color: $fit-secondary;
   }
 
   .frame-logo {
@@ -37,13 +37,14 @@
     position: absolute;
     bottom: 0;
     padding: 15px;
-    background: #111115;
+    background: $fit-secondary;
     width: 100%;
-    color: #a59f9f;
+    color: $fit-text;
   }
 
   .btn-secondary {
-    background: #9ea3b0;
+    background: #555;
+    border: none !important;
   }
 
   label {
@@ -58,7 +59,7 @@
   }
 
   .button-login {
-    background-color: #212121;
+    background-color: #313131;
     color: #9a9a9a;
     width: 100px;
     z-index: 30;
@@ -70,6 +71,10 @@
     padding: 3px;
     cursor: pointer;
     padding-left: 0;
+    transition: 0.5s ease-in-out;
+    &:hover {
+      background: #515151;
+    }
   }
 
   .material-icons {

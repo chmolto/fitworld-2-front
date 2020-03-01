@@ -22,14 +22,16 @@
       </div>
     </div>
   </div>
+
   <div class="row">
     <app-sidebar-frame
       [display]="displaySidebar"
       (close)="setDisplaySidebar($event)"
     ></app-sidebar-frame>
-    <div class="sidebar-trigger" (mouseenter)="setDisplaySidebar(true)">
-      <div class="img-frame"></div>
-      <img src="assets/images/load1.gif" />
+    <div
+      class="sidebar-trigger mat-elevation-z4"
+      (mouseenter)="setDisplaySidebar(true)"
+    >
       <p>FitWorld ©</p>
     </div>
     <div

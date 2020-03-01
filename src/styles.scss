@@ -4,7 +4,7 @@
 @import "styles/custom-classes";
 @import "styles/scrollbars";
 @import "styles/toasts";
-//@import "assets/fonts/fonts";
+@import "assets/fonts/_fonts";
 
 html {
   background: $fit-bg;
@@ -60,4 +60,13 @@ html {
 //DIALOGO BOTOM SHEET
 .mat-bottom-sheet-container {
   background: $fit-secondary !important;
+}
+
+/** 
+No trabajamos con container bootrstrap por lo que no
+necesitamos los paddings
+*/
+.row {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
 }

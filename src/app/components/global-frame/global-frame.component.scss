@@ -1,11 +1,19 @@
+@import "../../../styles.scss";
+
 #home {
   .topbar {
-    background: repeating-linear-gradient(190deg, black, transparent 100px);
-    justify-content: center !important;
+    position: relative;
+    z-index: 3;
+    height: 50px;
+    background: $fit-secondary;
+    justify-content: start !important;
     box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
       0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
     img {
-      padding-top: 10px;
+      padding-top: 7px;
+      height: 47px;
+      width: 200px;
+      padding-left: 30px;
     }
     .botonera {
       right: 32px;
@@ -13,18 +21,21 @@
       position: absolute;
       margin-top: 13px;
       .btn-botonera {
-        color: #ababab;
+        color: $fit-text;
         cursor: pointer;
         .fas {
-          font-size: 32px !important;
+          font-size: 27px !important;
           padding-left: 13px;
+          &:hover {
+            transition: 0.5s;
+            color: white;
+          }
         }
         .fa-sign-out-alt {
-          font-size: 38px !important;
-        }
-        .fas:hover {
-          transition: 0.5s;
-          color: rgba(97, 255, 255, 0.753);
+          font-size: 30px !important;
+          &:hover {
+            color: red !important;
+          }
         }
       }
     }
@@ -34,29 +45,14 @@
     top: 0;
     left: 0;
     height: 100%;
-    background: #151519;
-    max-width: 60px;
+    background: $fit-secondary;
+    width: 50px;
     z-index: 1;
-    img {
-      width: 110px;
-      cursor: pointer;
-      z-index: 1;
-      position: absolute;
-      left: -11px;
-      top: -9px;
-    }
-    .img-frame {
-      width: 90px;
-      height: 90px;
-      z-index: 0;
-      background: cyan;
-      filter: blur(10px);
-      border-radius: 100%;
-    }
     p {
       writing-mode: vertical-rl;
-      color: #a59f9f;
+      color: $fit-text;
       bottom: 0;
+      left: -2px;
       text-orientation: initial;
       position: absolute;
     }

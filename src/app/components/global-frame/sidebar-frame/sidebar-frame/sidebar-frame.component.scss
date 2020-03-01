@@ -1,6 +1,8 @@
+@import "../../../../../styles.scss";
+
 #sidebar {
   .ui-sidebar {
-    background-color: #151519;
+    background-color: $fit-secondary;
     border: none;
   }
 
@@ -11,6 +13,11 @@
   }
 
   .pointer-cursor:hover {
-    background: #605c726e;
+    background: #373737;
+  }
+
+  .mat-list-item {
+    height: 40px;
+    border-radius: 3px;
   }
 }

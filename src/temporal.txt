@@ -1,0 +1,21 @@
+    img {
+      width: 110px;
+      cursor: pointer;
+      z-index: 1;
+      position: absolute;
+      left: -11px;
+      top: -9px;
+    }
+    .img-frame {
+      width: 90px;
+      height: 90px;
+      z-index: 0;
+      background: cyan;
+      filter: blur(10px);
+      border-radius: 100%;
+    }
+
+    ---------------------
+
+          <div class="img-frame"></div>
+      <img src="assets/images/load1.gif" />
