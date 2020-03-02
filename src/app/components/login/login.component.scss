@@ -1,12 +1,24 @@
+@import "../../../styles.scss";
+
 .my-container {
+  .form-container {
+    background: $fit-secondary;
+    height: 100%;
+    padding-top: 40vh;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
   .btn-container {
     width: 100%;
     div {
       width: 100%;
+      padding-bottom: 2px;
     }
     .log-button {
       width: 100%;
-      background: #393f45;
+      background: #555;
+      border: none;
     }
 
     .log-social-media {
@@ -24,16 +36,12 @@
     }
   }
 
-  .card {
-    margin-top: 30vh;
-    width: 300px;
-  }
   .front-cover {
     margin: 0 auto !important;
     max-width: 1900px;
     height: 100vh;
     width: 100vw;
-    background-image: url("../../../assets/images/zane1.jpg");
+    background-image: url("../../../assets/images/zane3.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -41,16 +49,29 @@
   .logo-holder {
     position: absolute;
     z-index: 3;
-    margin-top: -36px;
-    margin-left: 50px;
+    width: 80%;
+    margin-top: -350px;
+    margin-left: 0px;
+    max-width: 380px;
   }
-  .link-registro:hover {
-    color: RGB(1, 188, 243);
-    cursor: pointer;
-    transition: 0.5s;
-  }
+
   .link-registro {
-    box-shadow: 0px 20px 15px -9px rgba(0, 0, 0, 0.75);
+    margin-top: 15vh;
+    padding-bottom: 1px;
+    padding-top: 20px;
+    box-shadow: 0px 10px 10px -11px rgba(0, 0, 0, 0.95);
+    p {
+      color: white;
+      cursor: pointer;
+      transition: 0.5s ease-in-out;
+      &:hover {
+        color: $fit-blue !important;
+      }
+    }
+  }
+
+  .form-and-buttons {
+    margin-top: 3vh;
   }
 
   .blockquote {
@@ -58,6 +79,6 @@
     width: 800px;
     position: absolute;
     bottom: 0;
-    right: 5vw;
+    right: 30vw;
   }
 }
