@@ -59,14 +59,15 @@
     margin-top: 15vh;
     padding-bottom: 1px;
     padding-top: 20px;
-    box-shadow: 0px 10px 10px -11px rgba(0, 0, 0, 0.95);
-    p {
-      color: white;
-      cursor: pointer;
-      transition: 0.5s ease-in-out;
-      &:hover {
+    cursor: pointer;
+    &:hover {
+      p {
         color: $fit-blue !important;
       }
+    }
+    p {
+      color: white;
+      transition: 0.5s ease-in-out;
     }
   }
 
